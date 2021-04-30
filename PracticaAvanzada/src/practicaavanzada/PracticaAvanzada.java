@@ -16,7 +16,8 @@ public class PracticaAvanzada {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("NO");
+       int a = 3;
+        
     }
     
 }
