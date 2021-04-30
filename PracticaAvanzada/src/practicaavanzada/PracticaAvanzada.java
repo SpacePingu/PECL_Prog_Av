@@ -20,6 +20,9 @@ public class PracticaAvanzada {
         int a = 5;
         String palabra = "Hola mundo";
         
+
+       int a = 3;
+
         
     }
     
