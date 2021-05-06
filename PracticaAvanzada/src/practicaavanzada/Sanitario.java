@@ -9,7 +9,7 @@ package practicaavanzada;
  *
  * @author fersa
  */
-public class Sanitario {
+public class Sanitario extends Thread {
 
     private int id;
     private String numero;

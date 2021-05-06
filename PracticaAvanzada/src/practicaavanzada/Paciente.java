@@ -5,6 +5,9 @@
  */
 package practicaavanzada;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author fersa
@@ -13,13 +16,15 @@ public class Paciente extends Thread {
 
     private int id;
     private String numero;
+    private hospital h;
 
     public String getNumero() {
         return numero;
     }
 
-    public Paciente(int id) {
+    public Paciente(int id, hospital h) {
         this.id = id;
+        this.h=h;
 
 // ESTO ES PARA QUE SE VEA EL 0 DE P003 POR EJEMPLO        
         if (id < 1000) {
@@ -38,7 +43,24 @@ public class Paciente extends Thread {
 
     public void run() {
         //CODIGO DE HILO
-
+        
+        //Paciente ingresa en la recepcion del hospital
+        this.h.getRecepcion().add(this);
+        System.out.println("Paciente "+this.numero+" entra  hospital");
+        //Espera a que el auxiliar le tome los datos
+        
+            //Le da los al auxiliar
+           h.getComprobarDatos().offer(this);
+           //1% los paciente no estan citados
+           if ((int) Math.random()*100==1){ h.getRecepcion().remove(this);}
+          
+           //Esperan a que se le asigne puesto de vacunacion
+           h.getRecepcion().remove(this);
+           System.out.println("Paciente "+this.numero+" marcha del hospital");
+        
+        
+        
+        
     }
 
 }
