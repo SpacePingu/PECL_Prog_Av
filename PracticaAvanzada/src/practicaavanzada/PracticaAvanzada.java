@@ -8,6 +8,7 @@ package practicaavanzada;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import interfaz.Recepcion;
 
 /**
  *
@@ -20,9 +21,12 @@ public class PracticaAvanzada {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //Inicio recepcion
+        Recepcion r = new Recepcion();
+       r.setVisible(true);
       //Creo el hospital  
-      hospital hospital = new hospital();
-      
+      hospital hospital = new hospital(r);
+     
       //Creo a los sanitarios
       for (int i = 1; i<=10; i++){
           Sanitario s = new Sanitario(i);
@@ -40,7 +44,7 @@ public class PracticaAvanzada {
         for (int i = 1; i <= 2000; i++) {
             Paciente p = new Paciente(i,hospital);
             p.start();
-           
+            
           try {
               sleep(1000 + (int) (Math.random() * 2000));
           } catch (InterruptedException ex) {

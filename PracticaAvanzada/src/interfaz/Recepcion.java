@@ -5,6 +5,9 @@
  */
 package interfaz;
 
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 /**
  *
  * @author adryh
@@ -131,6 +134,14 @@ public class Recepcion extends javax.swing.JFrame {
                 new Recepcion().setVisible(true);
             }
         });
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JTextArea getjTextColaEspera() {
+        return jTextColaEspera;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
