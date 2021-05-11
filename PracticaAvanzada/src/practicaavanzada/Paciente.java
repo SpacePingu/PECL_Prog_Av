@@ -49,6 +49,7 @@ public class Paciente extends Thread {
         h.getRecepcion().add(this);
         System.out.println("Paciente " + this.numero + " entra en el hospital");
         h.getR().getjScrollPane1().setViewportView(new JLabel(h.recorrerCola(h.getRecepcion())));
+        
         //Espera a que el auxiliar le tome los datos
         try {
             //Le da los al auxiliar
