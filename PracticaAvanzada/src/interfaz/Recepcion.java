@@ -7,6 +7,7 @@ package interfaz;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -107,6 +108,14 @@ public class Recepcion extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 
+
+    public JTextField getjTextAuxiliarCola() {
+        return jTextAuxiliarCola;
+    }
+
+    public JTextField getjTextFieldPaciente() {
+        return jTextFieldPaciente;
+    }
 
     public JScrollPane getjScrollPane1() {
         return jScrollPane1;
