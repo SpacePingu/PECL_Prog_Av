@@ -47,7 +47,7 @@ public class Auxiliar extends Thread {
                     Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //if (p == null) { System.out.println("paciente nulo"); }
-                    h.r.getjTextAuxiliarCola().setText(this.numero);
+                    h.getR().getjTextAuxiliarCola().setText(this.numero);
                     System.out.println("Auxiliar " + this.numero + " comprueba datos de " + p.getNumero());
                     contador.getAndIncrement();
                    
@@ -61,7 +61,7 @@ public class Auxiliar extends Thread {
                        
                     //Descaso cada 10 pacientes
                     if (contador.get()==10){
-                        h.r.getjTextAuxiliarCola().setText("");
+                        h.getR().getjTextAuxiliarCola().setText("");
                     try {
                         System.out.println("Descanso de A1");
                         Thread.sleep(3000+ (int) Math.random()*2000);
