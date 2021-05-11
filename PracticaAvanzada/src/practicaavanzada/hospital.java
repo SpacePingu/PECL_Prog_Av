@@ -25,7 +25,7 @@ public class hospital {
     private ConcurrentLinkedQueue<Paciente> recepcion = new ConcurrentLinkedQueue<Paciente>();
     private BlockingQueue<Paciente> comprobarDatos = new LinkedBlockingQueue<Paciente>(1);
     private BlockingQueue mesaAsiganada = new LinkedBlockingQueue(1);
-    private Recepcion r;
+    Recepcion r;
     
 
     public BlockingQueue<Paciente> getComprobarDatos() {

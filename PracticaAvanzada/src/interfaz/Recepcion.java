@@ -7,6 +7,7 @@ package interfaz;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -134,6 +135,14 @@ public class Recepcion extends javax.swing.JFrame {
                 new Recepcion().setVisible(true);
             }
         });
+    }
+
+    public JTextField getjTextAuxiliarCola() {
+        return jTextAuxiliarCola;
+    }
+
+    public JTextField getjTextFieldPaciente() {
+        return jTextFieldPaciente;
     }
 
     public JScrollPane getjScrollPane1() {
