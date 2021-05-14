@@ -279,6 +279,11 @@ public class SalaObservacion extends javax.swing.JFrame {
         );
 
         jButtonAtras.setText("Atrás");
+        jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -315,6 +320,11 @@ public class SalaObservacion extends javax.swing.JFrame {
     private void jTextObservacion13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextObservacion13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextObservacion13ActionPerformed
+
+    private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
+        this.setVisible(false);
+        MenuPrincipal.getM().setVisible(true);
+    }//GEN-LAST:event_jButtonAtrasActionPerformed
 
     /**
      * @param args the command line arguments
