@@ -73,7 +73,10 @@ public class Paciente extends Thread {
             h.getMesaAsiganada().take();
         } catch (InterruptedException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+           
         }
+        
+        //Demomento los mando fuera del hospital
         h.getRecepcion().remove(this);
         System.out.println("Paciente " + this.numero + " marcha del hospital");
 
