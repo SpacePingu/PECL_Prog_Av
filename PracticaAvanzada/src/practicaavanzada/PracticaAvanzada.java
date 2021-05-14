@@ -10,6 +10,7 @@ import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import interfaz.Recepcion;
+import interfaz.SalaVacunacion;
 
 /**
  *
@@ -29,7 +30,9 @@ public class PracticaAvanzada {
 
         //Inicio recepcion
         Recepcion r = new Recepcion();
+        SalaVacunacion v = new SalaVacunacion();
         r.setVisible(true);
+        v.setVisible(true);
         
         //Creo el hospital  
         hospital hospital = new hospital(r);
