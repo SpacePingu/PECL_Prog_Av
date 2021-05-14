@@ -44,8 +44,10 @@ public class Recepcion extends javax.swing.JFrame {
 
         jLabel1.setText("RECECPCIÓN");
 
+        jTextColaEspera.setEditable(false);
         jTextColaEspera.setColumns(20);
         jTextColaEspera.setRows(5);
+        jTextColaEspera.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextColaEspera);
 
         jLabel2.setText("Cola de espera");
