@@ -69,6 +69,7 @@ public class Recepcion extends javax.swing.JFrame {
         jTextColaEspera.setEditable(false);
         jTextColaEspera.setColumns(15);
         jTextColaEspera.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextColaEspera.setLineWrap(true);
         jTextColaEspera.setRows(5);
         jTextColaEspera.setToolTipText("");
         jTextColaEspera.setWrapStyleWord(true);
@@ -80,9 +81,6 @@ public class Recepcion extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 844, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(176, 176, 176)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,8 +96,11 @@ public class Recepcion extends javax.swing.JFrame {
                                 .addGap(42, 42, 42))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(420, 420, 420)
-                        .addComponent(jLabel2)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 863, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
