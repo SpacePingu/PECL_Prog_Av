@@ -5,28 +5,63 @@
  */
 package practicaavanzada;
 
-import java.util.Queue;
-import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.SynchronousQueue;
-import interfaz.Recepcion;
+import interfaz.*;
 import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
  * @author fersa
  */
 public class hospital {
-    private Semaphore salaVacunacion = new Semaphore (10);
-    private Semaphore salaObservacion = new Semaphore (20);
+
+    private Recepcion r;
+    private SalaObservacion o;
+    private SalaDescanso d;
+    private SalaVacunacion v;
+    private Semaphore salaVacunacionSemaforo = new Semaphore(10);
+    private Semaphore salaObservacionSemaforo = new Semaphore(20);
     private ConcurrentLinkedQueue<Paciente> recepcion = new ConcurrentLinkedQueue<Paciente>();
     private BlockingQueue<Paciente> comprobarDatos = new LinkedBlockingQueue<Paciente>(1);
     private BlockingQueue mesaAsiganada = new LinkedBlockingQueue(1);
-    private Recepcion r;
-    
+    private AtomicInteger vacunas = new AtomicInteger(0);
+
+    public hospital(Recepcion r, SalaObservacion o, SalaDescanso d, SalaVacunacion v) {
+        this.r = r;
+        this.o = o;
+        this.d = d;
+        this.v = v;
+    }
+
+    public AtomicInteger getVacunas() {
+        return vacunas;
+    }
+
+    public SalaObservacion getO() {
+        return o;
+    }
+
+    public SalaDescanso getD() {
+        return d;
+    }
+
+    public SalaVacunacion getV() {
+        return v;
+    }
+
+    public AtomicInteger añadirVacunas() {
+        vacunas.addAndGet(1);
+        return vacunas;
+    }
+
+    public AtomicInteger vacunar() {
+        vacunas.decrementAndGet();
+        return vacunas;
+    }
 
     public BlockingQueue<Paciente> getComprobarDatos() {
         return comprobarDatos;
@@ -35,37 +70,37 @@ public class hospital {
     public BlockingQueue getMesaAsiganada() {
         return mesaAsiganada;
     }
-    
-    public Semaphore getSalaVacunacion() {
-        return salaVacunacion;
+
+    public Semaphore getSalaVacunacionSemaforo() {
+        return salaVacunacionSemaforo;
     }
 
-    public Semaphore getSalaObservacion() {
-        return salaObservacion;
+    public Semaphore getSalaObservacionSemaforo() {
+        return salaObservacionSemaforo;
     }
 
     public ConcurrentLinkedQueue<Paciente> getRecepcion() {
         return recepcion;
     }
-    
-    public hospital(Recepcion r){
-    this.r = r;
+
+    public hospital(Recepcion r) {
+        this.r = r;
     }
 
     public Recepcion getR() {
         return r;
     }
 
-    public String recorrerCola(ConcurrentLinkedQueue<Paciente> cola){
+    public String recorrerCola(ConcurrentLinkedQueue<Paciente> cola) {
         String s = "";
         Paciente p;
         Iterator<Paciente> it = cola.iterator();
         ConcurrentLinkedQueue<Paciente> c2 = new ConcurrentLinkedQueue<Paciente>();
-        while(it.hasNext())  {
-            p= it.next();
-        c2.add(p);
+        while (it.hasNext()) {
+            p = it.next();
+            c2.add(p);
 
-            s+=p.getNumero() + ", ";
+            s += p.getNumero() + ", ";
         }
         return s;
     }

@@ -19,6 +19,10 @@ public class Paciente extends Thread {
     private String numero;
     private hospital h;
 
+    public hospital getHospital() {
+        return h;
+    }
+
     public String getNumero() {
         return numero;
     }
@@ -47,15 +51,15 @@ public class Paciente extends Thread {
 
         //Paciente ingresa en la recepcion del hospital
         h.getRecepcion().add(this);
-        h.getR().getjTextFieldPaciente().setText(h.getRecepcion().element().getNumero());
+        h.getR().getjTextFieldPaciente().setText(h.getRecepcion().element().getNumero()); 
         System.out.println("Paciente " + this.numero + " entra en el hospital");
-      
-        //h.r.getjScrollPane1().setViewportView(new JLabel(h.recorrerCola(h.getRecepcion())));
+        
+        //Introduce visualmente la cola de espera en la interfaz
         h.getR().getjTextColaEspera().setText(h.recorrerCola(h.getRecepcion()));
 
         //Espera a que el auxiliar le tome los datos
         try {
-            //Le da los al auxiliar
+            //Le da los datos al auxiliar
             h.getComprobarDatos().put(this);
         } catch (InterruptedException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,6 +75,7 @@ public class Paciente extends Thread {
         try {
 
             h.getMesaAsiganada().take();
+        //System.out.println("Paciente " + this.getNumero() + " se le asigna el puesto: "+ h.getSalaVacunacion() );
         } catch (InterruptedException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
            

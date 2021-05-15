@@ -8,6 +8,7 @@ package interfaz;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import practicaavanzada.*;
 
 /**
  *
@@ -19,7 +20,7 @@ public class Recepcion extends javax.swing.JFrame {
      * Creates new form Recepcion
      */
     public Recepcion() {
-        initComponents();
+        initComponents();   
     }
 
     /**
@@ -43,6 +44,9 @@ public class Recepcion extends javax.swing.JFrame {
         jTextColaEspera = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Recepción");
+        setLocation(new java.awt.Point(400, 200));
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("RECECPCIÓN");

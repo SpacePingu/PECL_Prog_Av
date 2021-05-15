@@ -72,15 +72,24 @@ public class SalaObservacion extends javax.swing.JFrame {
         jButtonAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sala de Observación");
+        setLocation(new java.awt.Point(400, 200));
 
         jLabel1.setText("Sala de Observación");
+
+        jTextObservacion2.setEditable(false);
 
         jLabel15.setText("Puesto 7");
 
         jLabel4.setText("Puesto 12");
 
+        jTextObservacion18.setEditable(false);
+
         jLabel5.setText("Puesto 2");
 
+        jTextObservacion8.setEditable(false);
+
+        jTextObservacion13.setEditable(false);
         jTextObservacion13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextObservacion13ActionPerformed(evt);
@@ -89,23 +98,43 @@ public class SalaObservacion extends javax.swing.JFrame {
 
         jLabel16.setText("Puesto 18");
 
+        jTextObservacion3.setEditable(false);
+
         jLabel6.setText("Puesto 13");
 
         jLabel17.setText("Puesto 8");
 
+        jTextObservacion19.setEditable(false);
+
         jLabel7.setText("Puesto 3");
+
+        jTextObservacion9.setEditable(false);
+
+        jTextObservacion14.setEditable(false);
 
         jLabel18.setText("Puesto 19");
 
+        jTextObservacion4.setEditable(false);
+
         jLabel19.setText("Puesto 9");
 
+        jTextObservacion1.setEditable(false);
+
         jLabel8.setText("Puesto 14");
+
+        jTextObservacion20.setEditable(false);
 
         jLabel2.setText("Puesto 1");
 
         jLabel9.setText("Puesto 4");
 
+        jTextObservacion10.setEditable(false);
+
+        jTextObservacion15.setEditable(false);
+
         jLabel20.setText("Puesto 20");
+
+        jTextObservacion5.setEditable(false);
 
         jLabel21.setText("Puesto 10");
 
@@ -113,11 +142,23 @@ public class SalaObservacion extends javax.swing.JFrame {
 
         jLabel11.setText("Puesto 5");
 
+        jTextObservacion16.setEditable(false);
+
+        jTextObservacion6.setEditable(false);
+
         jLabel12.setText("Puesto 16");
 
         jLabel13.setText("Puesto 6");
 
+        jTextObservacion11.setEditable(false);
+
+        jTextObservacion17.setEditable(false);
+
         jLabel3.setText("Puesto 11");
+
+        jTextObservacion7.setEditable(false);
+
+        jTextObservacion12.setEditable(false);
 
         jLabel14.setText("Puesto 17");
 

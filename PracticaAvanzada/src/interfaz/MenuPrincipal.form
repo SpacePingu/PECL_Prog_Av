@@ -69,12 +69,12 @@
                       <Component id="jButRecepcion" max="32767" attributes="0"/>
                       <Component id="jButObservacion" pref="160" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="122" max="32767" attributes="0"/>
+                  <EmptySpace pref="116" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButVacunacion" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
                       <Component id="jButDescanso" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -82,14 +82,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButDescanso" pref="66" max="32767" attributes="0"/>
-                      <Component id="jButRecepcion" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButRecepcion" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
+                      <Component id="jButVacunacion" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButObservacion" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
-                      <Component id="jButVacunacion" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
+                      <Component id="jButDescanso" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="46" max="32767" attributes="0"/>
               </Group>

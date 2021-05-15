@@ -33,9 +33,13 @@ public class SalaDescanso extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sala de descanso");
+        setLocation(new java.awt.Point(600, 200));
+        setResizable(false);
 
         jLabel1.setText("SALA DESCANSO");
 
+        jTextPaneDescanso.setEditable(false);
         jScrollPane1.setViewportView(jTextPaneDescanso);
 
         jButton1.setText("Atrás");

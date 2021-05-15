@@ -5,6 +5,8 @@
  */
 package interfaz;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author adryh
@@ -59,12 +61,20 @@ public class SalaVacunacion extends javax.swing.JFrame {
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sala de Vacunación");
+        setLocation(new java.awt.Point(400, 300));
+        setResizable(false);
 
+        jTextPuesto6.setEditable(false);
+
+        jTextPuesto3.setEditable(false);
         jTextPuesto3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextPuesto3ActionPerformed(evt);
             }
         });
+
+        jTextPuesto4.setEditable(false);
 
         jLabel1.setText("Puesto 1");
 
@@ -74,17 +84,31 @@ public class SalaVacunacion extends javax.swing.JFrame {
 
         jLabel4.setText("Puesto 4");
 
+        jTextPuesto5.setEditable(false);
+
         jLabel5.setText("Puesto 5");
+
+        jTextPuesto1.setEditable(false);
+
+        jTextPuesto2.setEditable(false);
 
         jLabel6.setText("Puesto 6");
 
+        jTextPuesto7.setEditable(false);
+
         jLabel7.setText("Puesto 7");
+
+        jTextPuesto8.setEditable(false);
 
         jLabel8.setText("Puesto 8");
 
         jLabel9.setText("Puesto 9");
 
+        jTextPuesto9.setEditable(false);
+
         jLabel10.setText("Puesto 10");
+
+        jTextPuesto10.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -177,9 +201,17 @@ public class SalaVacunacion extends javax.swing.JFrame {
 
         jLabel11.setText("Auxiliar");
 
+        jTextAuxiliarVacunacion.setEditable(false);
         jTextAuxiliarVacunacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextAuxiliarVacunacionActionPerformed(evt);
+            }
+        });
+
+        jTextVaunasDisp.setEditable(false);
+        jTextVaunasDisp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextVaunasDispActionPerformed(evt);
             }
         });
 
@@ -254,6 +286,54 @@ public class SalaVacunacion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTextField getjTextAuxiliarVacunacion() {
+        return jTextAuxiliarVacunacion;
+    }
+
+    public JTextField getjTextPuesto1() {
+        return jTextPuesto1;
+    }
+
+    public JTextField getjTextPuesto10() {
+        return jTextPuesto10;
+    }
+
+    public JTextField getjTextPuesto2() {
+        return jTextPuesto2;
+    }
+
+    public JTextField getjTextPuesto3() {
+        return jTextPuesto3;
+    }
+
+    public JTextField getjTextPuesto4() {
+        return jTextPuesto4;
+    }
+
+    public JTextField getjTextPuesto5() {
+        return jTextPuesto5;
+    }
+
+    public JTextField getjTextPuesto6() {
+        return jTextPuesto6;
+    }
+
+    public JTextField getjTextPuesto7() {
+        return jTextPuesto7;
+    }
+
+    public JTextField getjTextPuesto8() {
+        return jTextPuesto8;
+    }
+
+    public JTextField getjTextPuesto9() {
+        return jTextPuesto9;
+    }
+
+    public JTextField getjTextVaunasDisp() {
+        return jTextVaunasDisp;
+    }
+
     private void jTextPuesto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPuesto3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextPuesto3ActionPerformed
@@ -266,6 +346,10 @@ public class SalaVacunacion extends javax.swing.JFrame {
         this.setVisible(false);
         MenuPrincipal.getM().setVisible(true);
     }//GEN-LAST:event_jButAtrasActionPerformed
+
+    private void jTextVaunasDispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextVaunasDispActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextVaunasDispActionPerformed
 
     /**
      * @param args the command line arguments
