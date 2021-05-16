@@ -203,7 +203,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         v.setVisible(false);
 
         //Creo el hospital  
-        hospital hospital = new hospital(r,o,d,v);
+        hospital hospital = new hospital(r.getjTextColaEspera(),r.getjTextAuxiliarCola(),r.getjTextFieldPaciente(),v.getjTextAuxiliarVacunacion(),v.getjTextVaunasDisp(),d.getjTextPaneDescanso());
 
         //Creo a los sanitarios
         for (int i = 1; i <= 10; i++) {
