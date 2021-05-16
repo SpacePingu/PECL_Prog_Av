@@ -9,9 +9,11 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;
-import interfaz.*;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -19,39 +21,79 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class hospital {
 
-    private Recepcion r;
-    private SalaObservacion o;
-    private SalaDescanso d;
-    private SalaVacunacion v;
-    private Semaphore salaVacunacionSemaforo = new Semaphore(10);
-    private Semaphore salaObservacionSemaforo = new Semaphore(20);
+    //Recepcion
+    private JTextArea colaEspera;
+    private JTextField aux1, pacienteAtendiendo;
     private ConcurrentLinkedQueue<Paciente> recepcion = new ConcurrentLinkedQueue<Paciente>();
     private BlockingQueue<Paciente> comprobarDatos = new LinkedBlockingQueue<Paciente>(1);
     private BlockingQueue mesaAsiganada = new LinkedBlockingQueue(1);
+    
+    //Sala de Vacunas
+    private Semaphore salaVacunacionSemaforo = new Semaphore(10);
     private AtomicInteger vacunas = new AtomicInteger(0);
+    private JTextField aux2, vacunasDisp;
+    
+    //Sala de descanso
+     private ConcurrentLinkedQueue descansoAux = new ConcurrentLinkedQueue();
+     private ConcurrentLinkedQueue descansoSan = new ConcurrentLinkedQueue();
 
-    public hospital(Recepcion r, SalaObservacion o, SalaDescanso d, SalaVacunacion v) {
-        this.r = r;
-        this.o = o;
-        this.d = d;
-        this.v = v;
+    
+    
+     private JTextPane salaDescanso;
+    
+    //Sala de observacion
+      private Semaphore salaObservacionSemaforo = new Semaphore(20);
+
+    public hospital(JTextArea colaEspera,JTextField aux1,JTextField pacienteAtendiendo,JTextField aux2,JTextField vacunasDisp, JTextPane salaDescanso) {
+        //Recepcion
+        this.colaEspera=colaEspera;
+        this.aux1=aux1;
+        this.pacienteAtendiendo=pacienteAtendiendo;
+        // Sala de Vacunas
+        this.aux2=aux2;
+        this.vacunasDisp=vacunasDisp;
+        //Sala de descanso
+        this.salaDescanso=salaDescanso;
+    }
+
+    public ConcurrentLinkedQueue getDescansoAux() {
+        return descansoAux;
+    }
+
+    public JTextPane getSalaDescanso() {
+        return salaDescanso;
+    }
+
+    public ConcurrentLinkedQueue getDescansoSan() {
+        return descansoSan;
+    }
+    
+    public JTextArea getColaEspera() {
+        return colaEspera;
+    }
+
+    public JTextField getAux2() {
+        return aux2;
+    }
+
+    
+    public JTextField getVacunasDisp() {
+        return vacunasDisp;
+    }
+    
+    public JTextField getAux1() {
+        return aux1;
+    }
+
+    public JTextField getPacienteAtendiendo() {
+        return pacienteAtendiendo;
     }
 
     public AtomicInteger getVacunas() {
         return vacunas;
     }
 
-    public SalaObservacion getO() {
-        return o;
-    }
-
-    public SalaDescanso getD() {
-        return d;
-    }
-
-    public SalaVacunacion getV() {
-        return v;
-    }
+   
 
     public AtomicInteger añadirVacunas() {
         vacunas.addAndGet(1);
@@ -83,15 +125,11 @@ public class hospital {
         return recepcion;
     }
 
-    public hospital(Recepcion r) {
-        this.r = r;
-    }
+   
 
-    public Recepcion getR() {
-        return r;
-    }
+    
 
-    public String recorrerCola(ConcurrentLinkedQueue<Paciente> cola) {
+    public String recorrerColaEspera(ConcurrentLinkedQueue<Paciente> cola) {
         String s = "";
         Paciente p;
         Iterator<Paciente> it = cola.iterator();
@@ -101,6 +139,30 @@ public class hospital {
             c2.add(p);
 
             s += p.getNumero() + ", ";
+        }
+        return s;
+    }
+    
+    
+    public String recorrerColaDescanso(hospital h) {
+       String s = "";
+        Sanitario san;
+        Auxiliar aux;
+        Iterator<Auxiliar> itAux = descansoAux.iterator();
+        Iterator<Sanitario> itSan = descansoSan.iterator();
+        ConcurrentLinkedQueue<Sanitario> cSan = new ConcurrentLinkedQueue<Sanitario>();
+        ConcurrentLinkedQueue<Auxiliar> cAux = new ConcurrentLinkedQueue<Auxiliar>();
+        while (itSan.hasNext()) {
+            san = itSan.next();
+            cSan.add(san);
+
+            s += san.getNumero() + ", ";
+        }
+        while (itAux.hasNext()) {
+            aux = itAux.next();
+            cAux.add(aux);
+
+            s += aux.getNumero() + ", ";
         }
         return s;
     }

@@ -5,6 +5,8 @@
  */
 package interfaz;
 
+import javax.swing.JTextPane;
+
 /**
  *
  * @author adryh
@@ -16,6 +18,10 @@ public class SalaDescanso extends javax.swing.JFrame {
      */
     public SalaDescanso() {
         initComponents();
+    }
+
+    public JTextPane getjTextPaneDescanso() {
+        return jTextPaneDescanso;
     }
 
     /**

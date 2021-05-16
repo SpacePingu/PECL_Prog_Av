@@ -51,11 +51,11 @@ public class Paciente extends Thread {
 
         //Paciente ingresa en la recepcion del hospital
         h.getRecepcion().add(this);
-        h.getR().getjTextFieldPaciente().setText(h.getRecepcion().element().getNumero()); 
+       
         System.out.println("Paciente " + this.numero + " entra en el hospital");
         
         //Introduce visualmente la cola de espera en la interfaz
-        h.getR().getjTextColaEspera().setText(h.recorrerCola(h.getRecepcion()));
+        h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
 
         //Espera a que el auxiliar le tome los datos
         try {

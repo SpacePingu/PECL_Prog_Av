@@ -43,12 +43,13 @@ public class Auxiliar extends Thread {
                 try {
 
                     p = this.h.getComprobarDatos().take();
+                    h.getPacienteAtendiendo().setText(p.getNumero());
                     Thread.sleep(3000 + (int) Math.random() * 2000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //if (p == null) { System.out.println("paciente nulo"); }
-                h.getR().getjTextAuxiliarCola().setText(this.numero);
+                h.getAux1().setText(this.numero);
                 System.out.println("Auxiliar " + this.numero + " comprueba datos de " + p.getNumero());
                 contador.getAndIncrement();
 
@@ -61,11 +62,14 @@ public class Auxiliar extends Thread {
 
                 //Descaso cada 10 pacientes
                 if (contador.get() == 10) {
-                    h.getR().getjTextAuxiliarCola().setText("");
+                    h.getAux1().setText("");
                     try {
                         System.out.println("Descanso de A1");
+                        h.getDescansoAux().add(this);
+                        h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
                         Thread.sleep(3000 + (int) Math.random() * 2000);
-
+                        h.getDescansoAux().remove(this);
+                        h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
                         contador.set(0);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,17 +80,21 @@ public class Auxiliar extends Thread {
             else {
                 try {
 
-                    h.getV().getjTextAuxiliarVacunacion().setText(this.numero);
+                    h.getAux2().setText(this.numero);
                     h.añadirVacunas();
                     contadorVacunas.incrementAndGet();
                     System.out.println("Vacuna añadida");
-                    h.getV().getjTextVaunasDisp().setText(h.getVacunas().toString());
+                    h.getVacunasDisp().setText(h.getVacunas().toString());
                     Thread.sleep(500 + (int) Math.random() * 500);
 
                     if (contadorVacunas.get() == 20) {
-                        h.getV().getjTextAuxiliarVacunacion().setText("");                       
+                        h.getAux2().setText(""); 
+                        h.getDescansoAux().add(this);
+                        h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
                         System.out.println("Auxiliar 2 descansa");
                         Thread.sleep(1000 + (int) Math.random() * 4000);
+                        h.getDescansoAux().remove(this);
+                        h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
                         contadorVacunas.set(0);
                     }
                     
