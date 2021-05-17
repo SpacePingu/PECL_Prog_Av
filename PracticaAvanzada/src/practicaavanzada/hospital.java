@@ -5,6 +5,7 @@
  */
 package practicaavanzada;
 
+import java.util.ArrayList;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -32,6 +33,7 @@ public class hospital {
     private Semaphore salaVacunacionSemaforo = new Semaphore(10);
     private AtomicInteger vacunas = new AtomicInteger(0);
     private JTextField aux2, vacunasDisp;
+    private ArrayList<puestoVacunacion> puestosVacunaciones;
     
     //Sala de descanso
      private ConcurrentLinkedQueue descansoAux = new ConcurrentLinkedQueue();
@@ -44,7 +46,7 @@ public class hospital {
     //Sala de observacion
       private Semaphore salaObservacionSemaforo = new Semaphore(20);
 
-    public hospital(JTextArea colaEspera,JTextField aux1,JTextField pacienteAtendiendo,JTextField aux2,JTextField vacunasDisp, JTextPane salaDescanso) {
+    public hospital(JTextArea colaEspera,JTextField aux1,JTextField pacienteAtendiendo,JTextField aux2,JTextField vacunasDisp, JTextPane salaDescanso, ArrayList<puestoVacunacion> puestosVacunaciones) {
         //Recepcion
         this.colaEspera=colaEspera;
         this.aux1=aux1;
@@ -52,6 +54,7 @@ public class hospital {
         // Sala de Vacunas
         this.aux2=aux2;
         this.vacunasDisp=vacunasDisp;
+        this.puestosVacunaciones=puestosVacunaciones;
         //Sala de descanso
         this.salaDescanso=salaDescanso;
     }
@@ -60,7 +63,7 @@ public class hospital {
         return descansoAux;
     }
 
-    public JTextPane getSalaDescanso() {
+    public synchronized JTextPane getSalaDescanso() {
         return salaDescanso;
     }
 
@@ -144,7 +147,7 @@ public class hospital {
     }
     
     
-    public String recorrerColaDescanso(hospital h) {
+    public synchronized String recorrerColaDescanso(hospital h) {
        String s = "";
         Sanitario san;
         Auxiliar aux;
@@ -166,5 +169,18 @@ public class hospital {
         }
         return s;
     }
+    
+    
+    public puestoVacunacion libreSanitario(){
+        puestoVacunacion pv;
+        for (int i = 0; i<=10;i++){
+            pv = this.puestosVacunaciones.get(i);
+            if (pv.isHuecoSanitario()){
+                return pv;
+            }
+        }
+        return null;
+    }
+    
 
 }
