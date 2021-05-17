@@ -27,26 +27,26 @@ public class hospital {
     private JTextField aux1, pacienteAtendiendo;
     private ConcurrentLinkedQueue<Paciente> recepcion = new ConcurrentLinkedQueue<Paciente>();
     private BlockingQueue<Paciente> comprobarDatos = new LinkedBlockingQueue<Paciente>(1);
-    private BlockingQueue mesaAsiganada = new LinkedBlockingQueue(1);
+    private BlockingQueue<puestoVacunacion> mesaAsiganada = new LinkedBlockingQueue<puestoVacunacion>(1);
     
     //Sala de Vacunas
     private Semaphore salaVacunacionSemaforo = new Semaphore(10);
     private AtomicInteger vacunas = new AtomicInteger(0);
     private JTextField aux2, vacunasDisp;
     private ArrayList<puestoVacunacion> puestosVacunaciones;
+    private BlockingQueue volanteVacuna = new LinkedBlockingQueue(1);
     
     //Sala de descanso
      private ConcurrentLinkedQueue descansoAux = new ConcurrentLinkedQueue();
      private ConcurrentLinkedQueue descansoSan = new ConcurrentLinkedQueue();
 
-    
-    
+   
      private JTextPane salaDescanso;
     
     //Sala de observacion
       private Semaphore salaObservacionSemaforo = new Semaphore(20);
 
-    public hospital(JTextArea colaEspera,JTextField aux1,JTextField pacienteAtendiendo,JTextField aux2,JTextField vacunasDisp, JTextPane salaDescanso, ArrayList<puestoVacunacion> puestosVacunaciones) {
+    public hospital(JTextArea colaEspera,JTextField aux1,JTextField pacienteAtendiendo,JTextField aux2,JTextField vacunasDisp, JTextPane salaDescanso) {
         //Recepcion
         this.colaEspera=colaEspera;
         this.aux1=aux1;
@@ -54,9 +54,12 @@ public class hospital {
         // Sala de Vacunas
         this.aux2=aux2;
         this.vacunasDisp=vacunasDisp;
-        this.puestosVacunaciones=puestosVacunaciones;
         //Sala de descanso
         this.salaDescanso=salaDescanso;
+    }
+
+    public void setPuestosVacunaciones(ArrayList<puestoVacunacion> puestosVacunaciones) {
+        this.puestosVacunaciones = puestosVacunaciones;
     }
 
     public ConcurrentLinkedQueue getDescansoAux() {
@@ -71,6 +74,10 @@ public class hospital {
         return descansoSan;
     }
     
+     public BlockingQueue getVolanteVacuna() {
+        return volanteVacuna;
+    }
+     
     public JTextArea getColaEspera() {
         return colaEspera;
     }
@@ -112,7 +119,7 @@ public class hospital {
         return comprobarDatos;
     }
 
-    public BlockingQueue getMesaAsiganada() {
+    public BlockingQueue<puestoVacunacion> getMesaAsiganada() {
         return mesaAsiganada;
     }
 
@@ -171,15 +178,29 @@ public class hospital {
     }
     
     
-    public puestoVacunacion libreSanitario(){
+    public synchronized puestoVacunacion libreSanitario(){
         puestoVacunacion pv;
-        for (int i = 0; i<=10;i++){
+        for (int i = 0; i<10;i++){
             pv = this.puestosVacunaciones.get(i);
             if (pv.isHuecoSanitario()){
+                pv.setHuecoSanitario(false);
                 return pv;
             }
         }
         return null;
+    }
+    
+    public synchronized puestoVacunacion librePaciente(){
+        puestoVacunacion pv=null;
+        
+        for (int i = 0; i<10;i++){
+            pv = this.puestosVacunaciones.get(i);
+            if (pv.isHuecoPaciente()){
+                
+                return pv;
+            }
+        }
+        return pv;
     }
     
 

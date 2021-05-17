@@ -5,8 +5,7 @@
  */
 package practicaavanzada;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,18 +18,18 @@ public class Sanitario extends Thread {
     private int id;
     private String numero;
     private hospital h;
-    private Lock cerrojo = new ReentrantLock();
+    private AtomicInteger contador = new AtomicInteger(0);
+    private puestoVacunacion pv;
 
     public String getNumero() {
         return numero;
     }
 
-    public Sanitario(int id,hospital h) {
+    public Sanitario(int id, hospital h) {
         this.id = id;
-        this.h=h;
+        this.h = h;
 
 // ESTO ES PARA QUE SE VEA EL 0 DE P03 POR EJEMPLO        
-       
         if (id < 10) {
             this.numero = "S0" + id;
         }
@@ -42,21 +41,60 @@ public class Sanitario extends Thread {
     public void run() {
         try {
             //CODIGO DE HILO
-            
+
             //Descanso de 1 a 3 segundos
+            this.pv = null;
             h.getDescansoSan().add(this);
             h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
-            System.out.println("Sanitario "+this.numero+" descansando");
-            Thread.sleep(1000+ (int) Math.random()*2000);
+            System.out.println("Sanitario " + this.numero + " descansando");
+            Thread.sleep(1000 + (int) Math.random() * 2000);
         } catch (InterruptedException ex) {
             Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
         }
-            h.getDescansoSan().remove(this);
-            h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
-            //Asignar mesa libre           
-            h.libreSanitario().meterSanitario(this);
-           
+        h.getDescansoSan().remove(this);
+        h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
+        //Asignar mesa libre           
+        pv = h.libreSanitario();
+        pv.meterSanitario(this);
+        while (true) {
+
+            //Poner Vacuna
+            
+                    try {
+                        System.out.println("Sanitario "+numero+" inyecta vacuna");
+                        pv.ponerVacuna(this);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    contador.incrementAndGet();
+                    pv.getTexto().setText(numero);
+                    
+                    
+                    
+                    //Descanso
+                    if (contador.get() == 15) {
+
+                        pv.limpiar();
+                        pv.setHuecoSanitario(true);
+                        this.pv = null;
+                        h.getDescansoSan().add(this);
+                        h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
+
+                        try {
+                            Thread.sleep(5000 + (int) Math.random() * 3000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //Asignar mesa libre           
+                        pv = h.libreSanitario();
+                        pv.meterSanitario(this);
+                        contador.set(0);
+                    }
+
+                  
+            }
+
+        }
     }
 
-}
 
