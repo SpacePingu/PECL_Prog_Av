@@ -23,6 +23,7 @@ public class Auxiliar extends Thread {
     private Paciente p;
     private AtomicInteger contador = new AtomicInteger(0);
     private AtomicInteger contadorVacunas = new AtomicInteger(0);
+    private puestoVacunacion pv;
 
     public String getNumero() {
         return numero;
@@ -39,27 +40,26 @@ public class Auxiliar extends Thread {
         while (true) {
             //Auxiliar 1
             if (this.id == 1) {
-
+                //COMPRUEBA DATOS
                 try {
-
+                    
                     p = this.h.getComprobarDatos().take();
                     h.getPacienteAtendiendo().setText(p.getNumero());
-                    Thread.sleep(3000 + (int) Math.random() * 2000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                //if (p == null) { System.out.println("paciente nulo"); }
-                h.getAux1().setText(this.numero);
+                 h.getAux1().setText(this.numero);
                 System.out.println("Auxiliar " + this.numero + " comprueba datos de " + p.getNumero());
                 contador.getAndIncrement();
-
-                try {
-                    Thread.sleep(500 + (int) (Math.random() * 500));
-                    h.getMesaAsiganada().put(1);
+                 Thread.sleep(500 + (int) (Math.random() * 500));
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                
+                //Busca sitio libre
+                    pv=h.librePaciente();
+                try {
+                    h.getMesaAsiganada().put(pv);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 //Descaso cada 10 pacientes
                 if (contador.get() == 10) {
                     h.getAux1().setText("");
@@ -83,7 +83,7 @@ public class Auxiliar extends Thread {
                     h.getAux2().setText(this.numero);
                     h.añadirVacunas();
                     contadorVacunas.incrementAndGet();
-                    System.out.println("Vacuna añadida");
+                    //System.out.println("Vacuna añadida");
                     h.getVacunasDisp().setText(h.getVacunas().toString());
                     Thread.sleep(500 + (int) Math.random() * 500);
 

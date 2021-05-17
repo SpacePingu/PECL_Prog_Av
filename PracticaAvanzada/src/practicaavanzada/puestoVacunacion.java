@@ -12,15 +12,19 @@ import javax.swing.JTextField;
  * @author fersa
  */
 public class puestoVacunacion {
-    private boolean huecoPaciente=true;
-    private boolean huecoSanitario=true;
+
+    private boolean huecoPaciente = true;
+    private boolean huecoSanitario = true;
     private int id;
-    private String s="";
+    private String s = "";
     private JTextField texto;
-    
-    public puestoVacunacion(JTextField texto, int id){
-        this.texto=texto;
-        this.id=id;
+    private hospital h;
+
+    public puestoVacunacion(JTextField texto, int id, hospital h) {
+        this.texto = texto;
+        this.id = id;
+        this.h = h;
+
     }
 
     public synchronized boolean isHuecoPaciente() {
@@ -42,23 +46,49 @@ public class puestoVacunacion {
     public JTextField getTexto() {
         return texto;
     }
-    
-    public synchronized void meterPaciente(Paciente p){
-        this.s += p.getNumero();
-        this.texto.setText(s);
-        
+
+    public void setHuecoPaciente(boolean huecoPaciente) {
+        this.huecoPaciente = huecoPaciente;
+    }
+
+    public void setHuecoSanitario(boolean huecoSanitario) {
+        this.huecoSanitario = huecoSanitario;
+    }
+
+    public synchronized void ponerVacuna(Sanitario S) throws InterruptedException {
+
+        while ((h.getVacunas().get() <= 0) || (this.isHuecoPaciente()) || (this.isHuecoSanitario())) {         
+                wait();    
         }
-    
-    public synchronized void meterSanitario(Sanitario S){
-        this.s += S.getNumero();
+        Thread.sleep(3000 + (int) Math.random() * 2000);
+         this.huecoPaciente = true;
+        
+        this.s=S.getNumero()+",";
+         this.texto.setText(s);
+        h.getVacunas().decrementAndGet();
+     
+        
+
+    }
+
+    public synchronized void meterPaciente(Paciente p) {
+        this.s += p.getNumero()+",";
+        this.texto.setText(s);
+        this.huecoPaciente=false;
+        notifyAll();
+    }
+
+    public synchronized void meterSanitario(Sanitario S) {
+        this.s += S.getNumero()+",";
         this.texto.setText(s);
         this.huecoSanitario=false;
-        }
-    
-    public void limpiar(){
+        notifyAll();
+    }
+
+    public void limpiar() {
         s = "";
-        }
-    
-    
-    
+        this.texto.setText(s);
+        
+    }
+
 }

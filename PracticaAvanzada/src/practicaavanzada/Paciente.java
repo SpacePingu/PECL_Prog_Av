@@ -18,6 +18,9 @@ public class Paciente extends Thread {
     private int id;
     private String numero;
     private hospital h;
+    private puestoVacunacion pv;
+    
+    
 
     public hospital getHospital() {
         return h;
@@ -69,20 +72,26 @@ public class Paciente extends Thread {
         if ((int) Math.random() * 100 == 1) {
             System.out.println("Paciente " + this.getNumero() + " no estaba citado");
             h.getRecepcion().remove(this);
+            h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
         }
 
         //Esperan a que se le asigne puesto de
         try {
-
-            h.getMesaAsiganada().take();
+            
+           pv =  h.getMesaAsiganada().take();
+           h.getRecepcion().remove(this);
+           h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
+           pv.meterPaciente(this);
+       
         //System.out.println("Paciente " + this.getNumero() + " se le asigna el puesto: "+ h.getSalaVacunacion() );
         } catch (InterruptedException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
            
         }
         
-        //Demomento los mando fuera del hospital
-        h.getRecepcion().remove(this);
+        
+         //Demomento los mando fuera del hospital
+        
         System.out.println("Paciente " + this.numero + " marcha del hospital");
 
     }
