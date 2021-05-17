@@ -6,6 +6,7 @@
 package interfaz;
 
 import static java.lang.Thread.sleep;
+import java.util.ArrayList;
 import practicaavanzada.*;
 
 /**
@@ -201,13 +202,40 @@ public class MenuPrincipal extends javax.swing.JFrame {
         d.setVisible(false);
         o.setVisible(false);
         v.setVisible(false);
+        
+        
+        //Creo las salas de vacunacion
+        puestoVacunacion sv1 = new puestoVacunacion(v.getjTextPuesto1(),1);
+        puestoVacunacion sv2 = new puestoVacunacion(v.getjTextPuesto2(),2);
+        puestoVacunacion sv3 = new puestoVacunacion(v.getjTextPuesto3(),3);
+        puestoVacunacion sv4 = new puestoVacunacion(v.getjTextPuesto4(),4);
+        puestoVacunacion sv5 = new puestoVacunacion(v.getjTextPuesto5(),5);
+        puestoVacunacion sv6 = new puestoVacunacion(v.getjTextPuesto6(),6);
+        puestoVacunacion sv7 = new puestoVacunacion(v.getjTextPuesto7(),7);
+        puestoVacunacion sv8 = new puestoVacunacion(v.getjTextPuesto8(),8);
+        puestoVacunacion sv9 = new puestoVacunacion(v.getjTextPuesto9(),9);
+        puestoVacunacion sv10 = new puestoVacunacion(v.getjTextPuesto10(),0);
+        
+        ArrayList<puestoVacunacion> puestosVacunaciones = new ArrayList<puestoVacunacion>();
+        
+        puestosVacunaciones.add(sv1);
+        puestosVacunaciones.add(sv2);
+        puestosVacunaciones.add(sv3);
+        puestosVacunaciones.add(sv4);
+        puestosVacunaciones.add(sv5);
+        puestosVacunaciones.add(sv6);
+        puestosVacunaciones.add(sv7);
+        puestosVacunaciones.add(sv8);
+        puestosVacunaciones.add(sv9);
+        puestosVacunaciones.add(sv10);
+        
 
         //Creo el hospital  
-        hospital hospital = new hospital(r.getjTextColaEspera(),r.getjTextAuxiliarCola(),r.getjTextFieldPaciente(),v.getjTextAuxiliarVacunacion(),v.getjTextVaunasDisp(),d.getjTextPaneDescanso());
+        hospital hospital = new hospital(r.getjTextColaEspera(),r.getjTextAuxiliarCola(),r.getjTextFieldPaciente(),v.getjTextAuxiliarVacunacion(),v.getjTextVaunasDisp(),d.getjTextPaneDescanso(),puestosVacunaciones);
 
         //Creo a los sanitarios
         for (int i = 1; i <= 10; i++) {
-            Sanitario s = new Sanitario(i);
+            Sanitario s = new Sanitario(i,hospital);
             s.start();
         }
 
