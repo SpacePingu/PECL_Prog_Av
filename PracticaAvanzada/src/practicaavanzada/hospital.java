@@ -39,8 +39,11 @@ public class hospital {
     //Sala de descanso
      private ConcurrentLinkedQueue descansoAux = new ConcurrentLinkedQueue();
      private ConcurrentLinkedQueue descansoSan = new ConcurrentLinkedQueue();
+<<<<<<< Updated upstream
 
    
+=======
+>>>>>>> Stashed changes
      private JTextPane salaDescanso;
     
     //Sala de observacion

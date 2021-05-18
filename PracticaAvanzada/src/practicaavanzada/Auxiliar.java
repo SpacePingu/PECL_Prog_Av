@@ -83,7 +83,11 @@ public class Auxiliar extends Thread {
                     h.getAux2().setText(this.numero);
                     h.añadirVacunas();
                     contadorVacunas.incrementAndGet();
+<<<<<<< Updated upstream
                     //System.out.println("Vacuna añadida");
+=======
+//                  System.out.println("Vacuna añadida");
+>>>>>>> Stashed changes
                     h.getVacunasDisp().setText(h.getVacunas().toString());
                     Thread.sleep(500 + (int) Math.random() * 500);
 
@@ -101,7 +105,6 @@ public class Auxiliar extends Thread {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //System.out.println("prueba de A2");
             }
         }
     }

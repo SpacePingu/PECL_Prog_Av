@@ -210,6 +210,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         hospital hospital = new hospital(r.getjTextColaEspera(),r.getjTextAuxiliarCola(),r.getjTextFieldPaciente(),v.getjTextAuxiliarVacunacion(),v.getjTextVaunasDisp(),d.getjTextPaneDescanso());
         
         //Creo las salas de vacunacion
+<<<<<<< Updated upstream
         puestoVacunacion sv1 = new puestoVacunacion(v.getjTextPuesto1(),1,hospital);
         puestoVacunacion sv2 = new puestoVacunacion(v.getjTextPuesto2(),2,hospital);
         puestoVacunacion sv3 = new puestoVacunacion(v.getjTextPuesto3(),3,hospital);
@@ -220,6 +221,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         puestoVacunacion sv8 = new puestoVacunacion(v.getjTextPuesto8(),8,hospital);
         puestoVacunacion sv9 = new puestoVacunacion(v.getjTextPuesto9(),9,hospital);
         puestoVacunacion sv10 = new puestoVacunacion(v.getjTextPuesto10(),10,hospital);
+=======
+        puestoVacunacion sv1 = new puestoVacunacion(v.getjTextPuesto1(),1);
+        puestoVacunacion sv2 = new puestoVacunacion(v.getjTextPuesto2(),2);
+        puestoVacunacion sv3 = new puestoVacunacion(v.getjTextPuesto3(),3);
+        puestoVacunacion sv4 = new puestoVacunacion(v.getjTextPuesto4(),4);
+        puestoVacunacion sv5 = new puestoVacunacion(v.getjTextPuesto5(),5);
+        puestoVacunacion sv6 = new puestoVacunacion(v.getjTextPuesto6(),6);
+        puestoVacunacion sv7 = new puestoVacunacion(v.getjTextPuesto7(),7);
+        puestoVacunacion sv8 = new puestoVacunacion(v.getjTextPuesto8(),8);
+        puestoVacunacion sv9 = new puestoVacunacion(v.getjTextPuesto9(),9);
+        puestoVacunacion sv10 = new puestoVacunacion(v.getjTextPuesto10(),10);
+>>>>>>> Stashed changes
         
         ArrayList<puestoVacunacion> puestosVacunaciones = new ArrayList<puestoVacunacion>();
         
@@ -251,7 +264,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         A2.start();
 
         //Creo a los pacientes
-        //Creo a los pacientes
+
         for (int i = 1; i <= 2000; i++) {
             Paciente p = new Paciente(i, hospital);
             p.start();
