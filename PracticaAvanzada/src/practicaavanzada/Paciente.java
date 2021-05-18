@@ -17,12 +17,12 @@ public class Paciente extends Thread {
 
     private int id;
     private String numero;
-    private hospital h;
-    private puestoVacunacion pv;
+    private Hospital h;
+    private PuestoVacunacion pv;
     
     
 
-    public hospital getHospital() {
+    public Hospital getHospital() {
         return h;
     }
 
@@ -30,7 +30,7 @@ public class Paciente extends Thread {
         return numero;
     }
 
-    public Paciente(int id, hospital h) {
+    public Paciente(int id, Hospital h) {
         this.id = id;
         this.h = h;
 
@@ -52,7 +52,7 @@ public class Paciente extends Thread {
     public void run() {
         //CODIGO DE HILO
 
-        //Paciente ingresa en la recepcion del hospital
+        //Paciente ingresa en la recepcion del Hospital
         h.getRecepcion().add(this);
        
         System.out.println("Paciente " + this.numero + " entra en el hospital");
@@ -81,6 +81,7 @@ public class Paciente extends Thread {
            pv =  h.getMesaAsiganada().take();
            h.getRecepcion().remove(this);
            h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
+           
            pv.meterPaciente(this);
        
         //System.out.println("Paciente " + this.getNumero() + " se le asigna el puesto: "+ h.getSalaVacunacion() );
@@ -89,8 +90,9 @@ public class Paciente extends Thread {
            
         }
         
+        System.out.println("Paciente " + this.numero + " va a observación");
         
-         //Demomento los mando fuera del hospital
+         //Demomento los mando fuera del Hospital
         
         System.out.println("Paciente " + this.numero + " marcha del hospital");
 

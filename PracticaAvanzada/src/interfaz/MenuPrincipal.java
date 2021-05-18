@@ -206,24 +206,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         
         
-         //Creo el hospital  
-        hospital hospital = new hospital(r.getjTextColaEspera(),r.getjTextAuxiliarCola(),r.getjTextFieldPaciente(),v.getjTextAuxiliarVacunacion(),v.getjTextVaunasDisp(),d.getjTextPaneDescanso());
+         //Creo el Hospital  
+        Hospital hospital = new Hospital(r.getjTextColaEspera(),r.getjTextAuxiliarCola(),r.getjTextFieldPaciente(),v.getjTextAuxiliarVacunacion(),v.getjTextVaunasDisp(),d.getjTextPaneDescanso());
         
         //Creo las salas de vacunacion
 
-        puestoVacunacion sv1 = new puestoVacunacion(v.getjTextPuesto1(),1,hospital);
-        puestoVacunacion sv2 = new puestoVacunacion(v.getjTextPuesto2(),2,hospital);
-        puestoVacunacion sv3 = new puestoVacunacion(v.getjTextPuesto3(),3,hospital);
-        puestoVacunacion sv4 = new puestoVacunacion(v.getjTextPuesto4(),4,hospital);
-        puestoVacunacion sv5 = new puestoVacunacion(v.getjTextPuesto5(),5,hospital);
-        puestoVacunacion sv6 = new puestoVacunacion(v.getjTextPuesto6(),6,hospital);
-        puestoVacunacion sv7 = new puestoVacunacion(v.getjTextPuesto7(),7,hospital);
-        puestoVacunacion sv8 = new puestoVacunacion(v.getjTextPuesto8(),8,hospital);
-        puestoVacunacion sv9 = new puestoVacunacion(v.getjTextPuesto9(),9,hospital);
-        puestoVacunacion sv10 = new puestoVacunacion(v.getjTextPuesto10(),10,hospital);
+        PuestoVacunacion sv1 = new PuestoVacunacion(v.getjTextPuesto1(),1,hospital);
+        PuestoVacunacion sv2 = new PuestoVacunacion(v.getjTextPuesto2(),2,hospital);
+        PuestoVacunacion sv3 = new PuestoVacunacion(v.getjTextPuesto3(),3,hospital);
+        PuestoVacunacion sv4 = new PuestoVacunacion(v.getjTextPuesto4(),4,hospital);
+        PuestoVacunacion sv5 = new PuestoVacunacion(v.getjTextPuesto5(),5,hospital);
+        PuestoVacunacion sv6 = new PuestoVacunacion(v.getjTextPuesto6(),6,hospital);
+        PuestoVacunacion sv7 = new PuestoVacunacion(v.getjTextPuesto7(),7,hospital);
+        PuestoVacunacion sv8 = new PuestoVacunacion(v.getjTextPuesto8(),8,hospital);
+        PuestoVacunacion sv9 = new PuestoVacunacion(v.getjTextPuesto9(),9,hospital);
+        PuestoVacunacion sv10 = new PuestoVacunacion(v.getjTextPuesto10(),10,hospital);
 
         
-        ArrayList<puestoVacunacion> puestosVacunaciones = new ArrayList<puestoVacunacion>();
+        ArrayList<PuestoVacunacion> puestosVacunaciones = new ArrayList<PuestoVacunacion>();
         
         puestosVacunaciones.add(sv1);
         puestosVacunaciones.add(sv2);

@@ -18,18 +18,18 @@ public class Auxiliar extends Thread {
 
     private int id;
     private String numero;
-    private hospital h;
+    private Hospital h;
     private int contadorPacientes = 0;
     private Paciente p;
     private AtomicInteger contador = new AtomicInteger(0);
     private AtomicInteger contadorVacunas = new AtomicInteger(0);
-    private puestoVacunacion pv;
+    private PuestoVacunacion pv;
 
     public String getNumero() {
         return numero;
     }
 
-    public Auxiliar(int id, hospital h) {
+    public Auxiliar(int id, Hospital h) {
         this.id = id;
         this.numero = "A" + id;
         this.h = h;

@@ -11,16 +11,16 @@ import javax.swing.JTextField;
  *
  * @author fersa
  */
-public class puestoVacunacion {
+public class PuestoVacunacion {
 
     private boolean huecoPaciente = true;
     private boolean huecoSanitario = true;
     private int id;
     private String s = "";
     private JTextField texto;
-    private hospital h;
+    private Hospital h;
 
-    public puestoVacunacion(JTextField texto, int id, hospital h) {
+    public PuestoVacunacion(JTextField texto, int id, Hospital h) {
         this.texto = texto;
         this.id = id;
         this.h = h;
@@ -60,8 +60,8 @@ public class puestoVacunacion {
         while ((h.getVacunas().get() <= 0) || (this.isHuecoPaciente()) || (this.isHuecoSanitario())) {
             wait();
         }
-        //valor original sleep (3000)
-        Thread.sleep(10000 + (int) Math.random() * 2000);
+
+        Thread.sleep(3000 + (int) Math.random() * 2000);
         this.huecoPaciente = true;
         this.s = S.getNumero() + ",";
         this.texto.setText(s);

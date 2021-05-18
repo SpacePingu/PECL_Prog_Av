@@ -17,15 +17,15 @@ public class Sanitario extends Thread {
 
     private int id;
     private String numero;
-    private hospital h;
+    private Hospital h;
     private AtomicInteger contador = new AtomicInteger(0);
-    private puestoVacunacion pv;
+    private PuestoVacunacion pv;
 
     public String getNumero() {
         return numero;
     }
 
-    public Sanitario(int id, hospital h) {
+    public Sanitario(int id, Hospital h) {
         this.id = id;
         this.h = h;
 
@@ -71,7 +71,7 @@ public class Sanitario extends Thread {
 //          pv.getTexto().setText(numero);
 
             //Descanso
-            if (contador.get() == 3) {
+            if (contador.get() == 15) {
                 System.out.println("Sanitario "+this.id+" descansa");
                 pv.limpiar();
                 pv.setHuecoSanitario(true);
