@@ -53,6 +53,7 @@ public class PuestoVacunacion {
 
     public void setHuecoSanitario(boolean huecoSanitario) {
         this.huecoSanitario = huecoSanitario;
+        
     }
 
     public synchronized void ponerVacuna(Sanitario S) throws InterruptedException {
