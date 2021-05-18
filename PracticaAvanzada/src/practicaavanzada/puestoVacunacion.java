@@ -57,38 +57,36 @@ public class puestoVacunacion {
 
     public synchronized void ponerVacuna(Sanitario S) throws InterruptedException {
 
-        while ((h.getVacunas().get() <= 0) || (this.isHuecoPaciente()) || (this.isHuecoSanitario())) {         
-                wait();    
+        while ((h.getVacunas().get() <= 0) || (this.isHuecoPaciente()) || (this.isHuecoSanitario())) {
+            wait();
         }
-        Thread.sleep(3000 + (int) Math.random() * 2000);
-         this.huecoPaciente = true;
-        
-        this.s=S.getNumero()+",";
-         this.texto.setText(s);
+        //valor original sleep (3000)
+        Thread.sleep(10000 + (int) Math.random() * 2000);
+        this.huecoPaciente = true;
+        this.s = S.getNumero() + ",";
+        this.texto.setText(s);
         h.getVacunas().decrementAndGet();
-     
-        
 
     }
 
     public synchronized void meterPaciente(Paciente p) {
-        this.s += p.getNumero()+",";
+        this.s += p.getNumero() + ",";
         this.texto.setText(s);
-        this.huecoPaciente=false;
+        this.huecoPaciente = false;
         notifyAll();
     }
 
     public synchronized void meterSanitario(Sanitario S) {
-        this.s += S.getNumero()+",";
+        this.s += S.getNumero() + ",";
         this.texto.setText(s);
-        this.huecoSanitario=false;
+        this.huecoSanitario = false;
         notifyAll();
     }
 
     public void limpiar() {
         s = "";
         this.texto.setText(s);
-        
+
     }
 
 }

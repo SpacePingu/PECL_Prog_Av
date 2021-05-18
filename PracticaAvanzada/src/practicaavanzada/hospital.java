@@ -191,13 +191,12 @@ public class hospital {
     }
     
     public synchronized puestoVacunacion librePaciente(){
-        puestoVacunacion pv=null;
-        
+        puestoVacunacion pv=null;        
         for (int i = 0; i<10;i++){
             pv = this.puestosVacunaciones.get(i);
-            if (pv.isHuecoPaciente()){
-                
-                return pv;
+            if (pv.isHuecoPaciente() && !pv.isHuecoSanitario()){
+                System.out.println("Paciente entra en puesto:"+ pv.getId());
+                return pv;               
             }
         }
         return pv;

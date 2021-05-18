@@ -75,7 +75,7 @@ public class Paciente extends Thread {
             h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
         }
 
-        //Esperan a que se le asigne puesto de
+        //Esperan a que se le asigne puesto de vacunacion
         try {
             
            pv =  h.getMesaAsiganada().take();
