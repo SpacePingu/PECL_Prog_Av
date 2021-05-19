@@ -202,29 +202,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         d.setVisible(false);
         o.setVisible(false);
         v.setVisible(false);
-        
-        
-        
-        
-         //Creo el Hospital  
-        Hospital hospital = new Hospital(r.getjTextColaEspera(),r.getjTextAuxiliarCola(),r.getjTextFieldPaciente(),v.getjTextAuxiliarVacunacion(),v.getjTextVaunasDisp(),d.getjTextPaneDescanso());
-        
+
+        //Creo el Hospital  
+        Hospital hospital = new Hospital(r.getjTextColaEspera(), r.getjTextAuxiliarCola(), r.getjTextFieldPaciente(), v.getjTextAuxiliarVacunacion(), v.getjTextVaunasDisp(), d.getjTextPaneDescanso());
+
         //Creo las salas de vacunacion
+        PuestoVacunacion sv1 = new PuestoVacunacion(v.getjTextPuesto1(), 1, hospital);
+        PuestoVacunacion sv2 = new PuestoVacunacion(v.getjTextPuesto2(), 2, hospital);
+        PuestoVacunacion sv3 = new PuestoVacunacion(v.getjTextPuesto3(), 3, hospital);
+        PuestoVacunacion sv4 = new PuestoVacunacion(v.getjTextPuesto4(), 4, hospital);
+        PuestoVacunacion sv5 = new PuestoVacunacion(v.getjTextPuesto5(), 5, hospital);
+        PuestoVacunacion sv6 = new PuestoVacunacion(v.getjTextPuesto6(), 6, hospital);
+        PuestoVacunacion sv7 = new PuestoVacunacion(v.getjTextPuesto7(), 7, hospital);
+        PuestoVacunacion sv8 = new PuestoVacunacion(v.getjTextPuesto8(), 8, hospital);
+        PuestoVacunacion sv9 = new PuestoVacunacion(v.getjTextPuesto9(), 9, hospital);
+        PuestoVacunacion sv10 = new PuestoVacunacion(v.getjTextPuesto10(), 10, hospital);
 
-        PuestoVacunacion sv1 = new PuestoVacunacion(v.getjTextPuesto1(),1,hospital);
-        PuestoVacunacion sv2 = new PuestoVacunacion(v.getjTextPuesto2(),2,hospital);
-        PuestoVacunacion sv3 = new PuestoVacunacion(v.getjTextPuesto3(),3,hospital);
-        PuestoVacunacion sv4 = new PuestoVacunacion(v.getjTextPuesto4(),4,hospital);
-        PuestoVacunacion sv5 = new PuestoVacunacion(v.getjTextPuesto5(),5,hospital);
-        PuestoVacunacion sv6 = new PuestoVacunacion(v.getjTextPuesto6(),6,hospital);
-        PuestoVacunacion sv7 = new PuestoVacunacion(v.getjTextPuesto7(),7,hospital);
-        PuestoVacunacion sv8 = new PuestoVacunacion(v.getjTextPuesto8(),8,hospital);
-        PuestoVacunacion sv9 = new PuestoVacunacion(v.getjTextPuesto9(),9,hospital);
-        PuestoVacunacion sv10 = new PuestoVacunacion(v.getjTextPuesto10(),10,hospital);
-
-        
         ArrayList<PuestoVacunacion> puestosVacunaciones = new ArrayList<PuestoVacunacion>();
-        
+
         puestosVacunaciones.add(sv1);
         puestosVacunaciones.add(sv2);
         puestosVacunaciones.add(sv3);
@@ -235,16 +230,62 @@ public class MenuPrincipal extends javax.swing.JFrame {
         puestosVacunaciones.add(sv8);
         puestosVacunaciones.add(sv9);
         puestosVacunaciones.add(sv10);
-        
-        hospital.setPuestosVacunaciones(puestosVacunaciones);
 
-        
+        hospital.setPuestosVacunaciones(puestosVacunaciones);
+        //lleno los puestos libres con el array de las salas
+
         for (int i = 0; i <= 9; i++) {
-            hospital.getPuestosLibres().add(puestosVacunaciones.get(i));
+            hospital.getPuestosVacunacionLibres().add(puestosVacunaciones.get(i));
         }
+
+        //creo las salas de observación
+        PuestoObservacion po1 = new PuestoObservacion(1, o.getjTextObservacion1(), hospital);
+        PuestoObservacion po2 = new PuestoObservacion(2, o.getjTextObservacion2(), hospital);
+        PuestoObservacion po3 = new PuestoObservacion(3, o.getjTextObservacion3(), hospital);
+        PuestoObservacion po4 = new PuestoObservacion(4, o.getjTextObservacion4(), hospital);
+        PuestoObservacion po5 = new PuestoObservacion(5, o.getjTextObservacion5(), hospital);
+        PuestoObservacion po6 = new PuestoObservacion(6, o.getjTextObservacion6(), hospital);
+        PuestoObservacion po7 = new PuestoObservacion(7, o.getjTextObservacion7(), hospital);
+        PuestoObservacion po8 = new PuestoObservacion(8, o.getjTextObservacion8(), hospital);
+        PuestoObservacion po9 = new PuestoObservacion(9, o.getjTextObservacion9(), hospital);
+        PuestoObservacion po10 = new PuestoObservacion(10, o.getjTextObservacion10(), hospital);
+        PuestoObservacion po11 = new PuestoObservacion(11, o.getjTextObservacion10(), hospital);
+        PuestoObservacion po12 = new PuestoObservacion(12, o.getjTextObservacion12(), hospital);
+        PuestoObservacion po13 = new PuestoObservacion(13, o.getjTextObservacion13(), hospital);
+        PuestoObservacion po14 = new PuestoObservacion(14, o.getjTextObservacion14(), hospital);
+        PuestoObservacion po15 = new PuestoObservacion(15, o.getjTextObservacion15(), hospital);
+        PuestoObservacion po16 = new PuestoObservacion(16, o.getjTextObservacion16(), hospital);
+        PuestoObservacion po17 = new PuestoObservacion(17, o.getjTextObservacion17(), hospital);
+        PuestoObservacion po18 = new PuestoObservacion(18, o.getjTextObservacion18(), hospital);
+        PuestoObservacion po19 = new PuestoObservacion(19, o.getjTextObservacion19(), hospital);
+        PuestoObservacion po20 = new PuestoObservacion(20, o.getjTextObservacion20(), hospital);
+
+        ArrayList<PuestoObservacion> puestosObservaciones = new ArrayList<PuestoObservacion>();
+       
+        puestosObservaciones.add(po1);
+        puestosObservaciones.add(po2);
+        puestosObservaciones.add(po3);
+        puestosObservaciones.add(po4);
+        puestosObservaciones.add(po5);
+        puestosObservaciones.add(po6);
+        puestosObservaciones.add(po7);
+        puestosObservaciones.add(po8);
+        puestosObservaciones.add(po9);
+        puestosObservaciones.add(po10);
+        puestosObservaciones.add(po11);
+        puestosObservaciones.add(po12);
+        puestosObservaciones.add(po13);
+        puestosObservaciones.add(po14);
+        puestosObservaciones.add(po15);
+        puestosObservaciones.add(po16);
+        puestosObservaciones.add(po17);
+        puestosObservaciones.add(po18);
+        puestosObservaciones.add(po19);
+        puestosObservaciones.add(po20);
+
         //Creo a los sanitarios
         for (int i = 1; i <= 10; i++) {
-            Sanitario s = new Sanitario(i,hospital);
+            Sanitario s = new Sanitario(i, hospital);
             s.start();
         }
 
@@ -255,7 +296,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         A2.start();
 
         //Creo a los pacientes
-
         for (int i = 1; i <= 2000; i++) {
             Paciente p = new Paciente(i, hospital);
             p.start();

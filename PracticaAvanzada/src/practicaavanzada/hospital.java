@@ -34,7 +34,7 @@ public class Hospital {
 
     //Sala de Vacunas
     private BlockingQueue<PuestoVacunacion> mesaAsiganada = new LinkedBlockingQueue<PuestoVacunacion>(1);
-    private BlockingQueue<PuestoVacunacion> puestosLibres = new LinkedBlockingQueue<PuestoVacunacion>(10); 
+    private BlockingQueue<PuestoVacunacion> puestosVacunacionLibres = new LinkedBlockingQueue<PuestoVacunacion>(10); 
     private Semaphore salaVacunacionSemaforo = new Semaphore(10);
     private AtomicInteger vacunas = new AtomicInteger(0);
     private JTextField aux2, vacunasDisp;
@@ -52,6 +52,7 @@ public class Hospital {
     private Semaphore salaObservacionSemaforo = new Semaphore(20);
     private ArrayList<PuestoObservacion> puestosObservacion;
     private BlockingQueue<PuestoObservacion> mesaObservacion = new LinkedBlockingQueue<PuestoObservacion>(1);
+    private BlockingQueue<PuestoObservacion> puestosObservacionLibres = new LinkedBlockingQueue<PuestoObservacion>(10);
 
     public Hospital(JTextArea colaEspera, JTextField aux1, JTextField pacienteAtendiendo, JTextField aux2, JTextField vacunasDisp, JTextPane salaDescanso) {
         //Recepcion
@@ -67,12 +68,12 @@ public class Hospital {
 
     }
 
-    public void setPuestosLibres(BlockingQueue<PuestoVacunacion> puestosLibres) {
-        this.puestosLibres = puestosLibres;
+    public void setPuestosVacunacionLibres(BlockingQueue<PuestoVacunacion> puestosVacunacionLibres) {
+        this.puestosVacunacionLibres = puestosVacunacionLibres;
     }
 
-    public BlockingQueue<PuestoVacunacion> getPuestosLibres() {
-        return puestosLibres;
+    public BlockingQueue<PuestoVacunacion> getPuestosVacunacionLibres() {
+        return puestosVacunacionLibres;
     }
 
     public ArrayList<PuestoVacunacion> getPuestosVacunaciones() {
@@ -221,7 +222,11 @@ public class Hospital {
 //    }
     
     public void puestoConHuecoPaciente(PuestoVacunacion pv){
-        puestosLibres.add(pv);
+        puestosVacunacionLibres.add(pv);
+   
+    }
+        public void puestoConHuecoPaciente(PuestoObservacion po){
+        puestosObservacionLibres.add(po);
    
     }
 

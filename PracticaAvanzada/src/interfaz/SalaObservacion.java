@@ -5,6 +5,8 @@
  */
 package interfaz;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author adryh
@@ -16,6 +18,86 @@ public class SalaObservacion extends javax.swing.JFrame {
      */
     public SalaObservacion() {
         initComponents();
+    }
+
+    public JTextField getjTextObservacion1() {
+        return jTextObservacion1;
+    }
+
+    public JTextField getjTextObservacion10() {
+        return jTextObservacion10;
+    }
+
+    public JTextField getjTextObservacion11() {
+        return jTextObservacion11;
+    }
+
+    public JTextField getjTextObservacion12() {
+        return jTextObservacion12;
+    }
+
+    public JTextField getjTextObservacion13() {
+        return jTextObservacion13;
+    }
+
+    public JTextField getjTextObservacion14() {
+        return jTextObservacion14;
+    }
+
+    public JTextField getjTextObservacion15() {
+        return jTextObservacion15;
+    }
+
+    public JTextField getjTextObservacion16() {
+        return jTextObservacion16;
+    }
+
+    public JTextField getjTextObservacion17() {
+        return jTextObservacion17;
+    }
+
+    public JTextField getjTextObservacion18() {
+        return jTextObservacion18;
+    }
+
+    public JTextField getjTextObservacion19() {
+        return jTextObservacion19;
+    }
+
+    public JTextField getjTextObservacion2() {
+        return jTextObservacion2;
+    }
+
+    public JTextField getjTextObservacion20() {
+        return jTextObservacion20;
+    }
+
+    public JTextField getjTextObservacion3() {
+        return jTextObservacion3;
+    }
+
+    public JTextField getjTextObservacion4() {
+        return jTextObservacion4;
+    }
+
+    public JTextField getjTextObservacion5() {
+        return jTextObservacion5;
+    }
+
+    public JTextField getjTextObservacion6() {
+        return jTextObservacion6;
+    }
+
+    public JTextField getjTextObservacion7() {
+        return jTextObservacion7;
+    }
+
+    public JTextField getjTextObservacion8() {
+        return jTextObservacion8;
+    }
+
+    public JTextField getjTextObservacion9() {
+        return jTextObservacion9;
     }
 
     /**

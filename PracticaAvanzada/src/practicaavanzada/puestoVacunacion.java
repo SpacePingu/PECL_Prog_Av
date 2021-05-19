@@ -29,11 +29,11 @@ public class PuestoVacunacion {
 
     }
 
-    public synchronized boolean isHuecoPaciente() {
+    public boolean isHuecoPaciente() {
         return huecoPaciente;
     }
 
-    public synchronized boolean isHuecoSanitario() {
+    public boolean isHuecoSanitario() {
         return huecoSanitario;
     }
 

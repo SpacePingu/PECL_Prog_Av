@@ -63,7 +63,7 @@ public class Sanitario extends Thread {
             //Poner Vacuna
             try {
                 pv.ponerVacuna(this);
-                System.out.println("Sanitario " + numero + " inyecta vacuna");
+                System.out.println("Sanitario " + numero + " inyecta vacuna a:");
             } catch (InterruptedException ex) {
                 Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -71,7 +71,7 @@ public class Sanitario extends Thread {
 //          pv.getTexto().setText(numero);
 
             //Descanso
-            if (contador.get() == 15) {
+            if (contador.get() == 3) {
                 System.out.println("Sanitario "+this.id+" descansa");
                 pv.limpiar();
                 pv.setHuecoSanitario(true);

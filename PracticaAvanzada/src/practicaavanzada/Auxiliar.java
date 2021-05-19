@@ -56,7 +56,7 @@ public class Auxiliar extends Thread {
                 //Busca sitio libre
 //                    pv = h.getPuestosVacunaciones().get(h.huecoPVpaciente());
                 try {
-                    h.getMesaAsiganada().put(h.getPuestosLibres().take());
+                    h.getMesaAsiganada().put(h.getPuestosVacunacionLibres().take());
 
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
