@@ -27,7 +27,7 @@ public class hospital {
     private JTextField aux1, pacienteAtendiendo;
     private ConcurrentLinkedQueue<Paciente> recepcion = new ConcurrentLinkedQueue<Paciente>();
     private BlockingQueue<Paciente> comprobarDatos = new LinkedBlockingQueue<Paciente>(1);
-    private BlockingQueue<puestoVacunacion> mesaAsiganada = new LinkedBlockingQueue<puestoVacunacion>(1);
+    private BlockingQueue<Integer> mesaAsiganada = new LinkedBlockingQueue<Integer>(1);
     
     //Sala de Vacunas
     private Semaphore salaVacunacionSemaforo = new Semaphore(10);
@@ -95,6 +95,10 @@ public class hospital {
         return aux1;
     }
 
+    public ArrayList<puestoVacunacion> getPuestosVacunaciones() {
+        return puestosVacunaciones;
+    }
+
     public JTextField getPacienteAtendiendo() {
         return pacienteAtendiendo;
     }
@@ -119,7 +123,7 @@ public class hospital {
         return comprobarDatos;
     }
 
-    public BlockingQueue<puestoVacunacion> getMesaAsiganada() {
+    public BlockingQueue<Integer> getMesaAsiganada() {
         return mesaAsiganada;
     }
 
@@ -154,7 +158,7 @@ public class hospital {
     }
     
     
-    public synchronized String recorrerColaDescanso(hospital h) {
+    public String recorrerColaDescanso(hospital h) {
        String s = "";
         Sanitario san;
         Auxiliar aux;
@@ -190,17 +194,17 @@ public class hospital {
         return null;
     }
     
-    public synchronized puestoVacunacion librePaciente(){
+    public synchronized int librePaciente(){
         puestoVacunacion pv=null;
-        
-        for (int i = 0; i<10;i++){
+        int i = 0;
+        for (i = 0; i<10;i++){
             pv = this.puestosVacunaciones.get(i);
             if (pv.isHuecoPaciente()){
                 
-                return pv;
+                return i;
             }
         }
-        return pv;
+        return i ;
     }
     
 

@@ -19,6 +19,15 @@ public class Paciente extends Thread {
     private String numero;
     private hospital h;
     private puestoVacunacion pv;
+    private int puesto;
+
+    public int getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(int puesto) {
+        this.puesto = puesto;
+    }
     
     
 
@@ -78,10 +87,11 @@ public class Paciente extends Thread {
         //Esperan a que se le asigne puesto de
         try {
             
-           pv =  h.getMesaAsiganada().take();
+           this.puesto =  h.getMesaAsiganada().take();
            h.getRecepcion().remove(this);
            h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
-           pv.meterPaciente(this);
+           h.getPuestosVacunaciones().get(this.puesto).meterPaciente(this);
+      
        
         //System.out.println("Paciente " + this.getNumero() + " se le asigna el puesto: "+ h.getSalaVacunacion() );
         } catch (InterruptedException ex) {

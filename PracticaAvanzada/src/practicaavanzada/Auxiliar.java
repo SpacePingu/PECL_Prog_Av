@@ -24,6 +24,7 @@ public class Auxiliar extends Thread {
     private AtomicInteger contador = new AtomicInteger(0);
     private AtomicInteger contadorVacunas = new AtomicInteger(0);
     private puestoVacunacion pv;
+    
 
     public String getNumero() {
         return numero;
@@ -54,9 +55,9 @@ public class Auxiliar extends Thread {
                 }
                 
                 //Busca sitio libre
-                    pv=h.librePaciente();
+                    p.setPuesto(h.librePaciente());
                 try {
-                    h.getMesaAsiganada().put(pv);
+                    h.getMesaAsiganada().put(p.getPuesto());
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                 }
