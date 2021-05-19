@@ -5,22 +5,24 @@
  */
 package practicaavanzada;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /**
  *
  * @author fersa
  */
-public class puestoVacunacion {
+public class PuestoVacunacion {
 
     private boolean huecoPaciente = true;
     private boolean huecoSanitario = true;
     private int id;
     private String s = "";
     private JTextField texto;
-    private hospital h;
+    private Hospital h;
 
-    public puestoVacunacion(JTextField texto, int id, hospital h) {
+    public PuestoVacunacion(JTextField texto, int id, Hospital h) {
         this.texto = texto;
         this.id = id;
         this.h = h;
@@ -53,42 +55,48 @@ public class puestoVacunacion {
 
     public void setHuecoSanitario(boolean huecoSanitario) {
         this.huecoSanitario = huecoSanitario;
+
     }
 
     public synchronized void ponerVacuna(Sanitario S) throws InterruptedException {
 
-        while ((h.getVacunas().get() <= 0) || (this.isHuecoPaciente()) || (this.isHuecoSanitario())) {         
-                wait();    
+        while ((h.getVacunas().get() <= 0) || (this.isHuecoPaciente())) {
+            wait();
         }
-        Thread.sleep(3000 + (int) Math.random() * 2000);
-         this.huecoPaciente = true;
-        
-        this.s=S.getNumero()+",";
-         this.texto.setText(s);
-        h.getVacunas().decrementAndGet();
-     
-        
 
+        try {
+            Thread.sleep(3000 + (int) Math.random() * 2000);
+            h.getVacunas().decrementAndGet();
+            h.getSalaVacunacionSemaforo().release();
+            this.huecoPaciente = true;
+            this.s = S.getNumero() + ",";
+            this.texto.setText(s);
+            notifyAll();
+        } catch (InterruptedException ex) {
+            System.err.println("Fallo en vacunación");
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public synchronized void meterPaciente(Paciente p) {
-        this.s += p.getNumero()+",";
+    public synchronized void meterPaciente(Paciente p) throws InterruptedException {
+        h.getSalaVacunacionSemaforo().acquire();
+        this.s += p.getNumero() + ",";
         this.texto.setText(s);
-        this.huecoPaciente=false;
+        this.huecoPaciente = false;
         notifyAll();
     }
 
     public synchronized void meterSanitario(Sanitario S) {
-        this.s += S.getNumero()+",";
+        this.s += S.getNumero() + ",";
         this.texto.setText(s);
-        this.huecoSanitario=false;
+        this.huecoSanitario = false;
         notifyAll();
     }
 
     public void limpiar() {
         s = "";
         this.texto.setText(s);
-        
+
     }
 
 }

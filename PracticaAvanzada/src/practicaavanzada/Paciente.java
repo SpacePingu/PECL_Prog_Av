@@ -17,6 +17,7 @@ public class Paciente extends Thread {
 
     private int id;
     private String numero;
+<<<<<<< HEAD
     private hospital h;
     private puestoVacunacion pv;
     private int puesto;
@@ -28,10 +29,14 @@ public class Paciente extends Thread {
     public void setPuesto(int puesto) {
         this.puesto = puesto;
     }
+=======
+    private Hospital h;
+    private PuestoVacunacion pv;
+>>>>>>> master
     
     
 
-    public hospital getHospital() {
+    public Hospital getHospital() {
         return h;
     }
 
@@ -39,7 +44,7 @@ public class Paciente extends Thread {
         return numero;
     }
 
-    public Paciente(int id, hospital h) {
+    public Paciente(int id, Hospital h) {
         this.id = id;
         this.h = h;
 
@@ -61,7 +66,7 @@ public class Paciente extends Thread {
     public void run() {
         //CODIGO DE HILO
 
-        //Paciente ingresa en la recepcion del hospital
+        //Paciente ingresa en la recepcion del Hospital
         h.getRecepcion().add(this);
        
         System.out.println("Paciente " + this.numero + " entra en el hospital");
@@ -84,23 +89,35 @@ public class Paciente extends Thread {
             h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
         }
 
-        //Esperan a que se le asigne puesto de
+        //Esperan a que se le asigne puesto de vacunacion
         try {
             
            this.puesto =  h.getMesaAsiganada().take();
            h.getRecepcion().remove(this);
            h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
+<<<<<<< HEAD
            h.getPuestosVacunaciones().get(this.puesto).meterPaciente(this);
       
+=======
+           
+           pv.meterPaciente(this);
+>>>>>>> master
        
         //System.out.println("Paciente " + this.getNumero() + " se le asigna el puesto: "+ h.getSalaVacunacion() );
         } catch (InterruptedException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
            
         }
-        
-        
-         //Demomento los mando fuera del hospital
+        try{
+            h.getSalaObservacionSemaforo().acquire();
+            
+            
+        System.out.println("Paciente " + this.numero + " va a observación");
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+           
+        }
+         //Demomento los mando fuera del Hospital
         
         System.out.println("Paciente " + this.numero + " marcha del hospital");
 

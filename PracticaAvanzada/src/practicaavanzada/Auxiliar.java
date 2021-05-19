@@ -18,19 +18,23 @@ public class Auxiliar extends Thread {
 
     private int id;
     private String numero;
-    private hospital h;
+    private Hospital h;
     private int contadorPacientes = 0;
     private Paciente p;
     private AtomicInteger contador = new AtomicInteger(0);
     private AtomicInteger contadorVacunas = new AtomicInteger(0);
+<<<<<<< HEAD
     private puestoVacunacion pv;
     
+=======
+    private PuestoVacunacion pv;
+>>>>>>> master
 
     public String getNumero() {
         return numero;
     }
 
-    public Auxiliar(int id, hospital h) {
+    public Auxiliar(int id, Hospital h) {
         this.id = id;
         this.numero = "A" + id;
         this.h = h;
@@ -84,7 +88,9 @@ public class Auxiliar extends Thread {
                     h.getAux2().setText(this.numero);
                     h.añadirVacunas();
                     contadorVacunas.incrementAndGet();
+
                     //System.out.println("Vacuna añadida");
+
                     h.getVacunasDisp().setText(h.getVacunas().toString());
                     Thread.sleep(500 + (int) Math.random() * 500);
 
@@ -102,7 +108,6 @@ public class Auxiliar extends Thread {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //System.out.println("prueba de A2");
             }
         }
     }
