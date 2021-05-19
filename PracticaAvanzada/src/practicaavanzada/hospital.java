@@ -30,9 +30,11 @@ public class Hospital {
     private JTextField aux1, pacienteAtendiendo;
     private ConcurrentLinkedQueue<Paciente> recepcion = new ConcurrentLinkedQueue<Paciente>();
     private BlockingQueue<Paciente> comprobarDatos = new LinkedBlockingQueue<Paciente>(1);
-    private BlockingQueue<PuestoVacunacion> mesaAsiganada = new LinkedBlockingQueue<PuestoVacunacion>(1);
+    
 
     //Sala de Vacunas
+    private BlockingQueue<PuestoVacunacion> mesaAsiganada = new LinkedBlockingQueue<PuestoVacunacion>(1);
+    private BlockingQueue<PuestoVacunacion> puestosLibres = new LinkedBlockingQueue<PuestoVacunacion>(10); 
     private Semaphore salaVacunacionSemaforo = new Semaphore(10);
     private AtomicInteger vacunas = new AtomicInteger(0);
     private JTextField aux2, vacunasDisp;
@@ -63,6 +65,18 @@ public class Hospital {
         this.salaDescanso = salaDescanso;
         //sala de observación
 
+    }
+
+    public void setPuestosLibres(BlockingQueue<PuestoVacunacion> puestosLibres) {
+        this.puestosLibres = puestosLibres;
+    }
+
+    public BlockingQueue<PuestoVacunacion> getPuestosLibres() {
+        return puestosLibres;
+    }
+
+    public ArrayList<PuestoVacunacion> getPuestosVacunaciones() {
+        return puestosVacunaciones;
     }
 
     public void setPuestosVacunaciones(ArrayList<PuestoVacunacion> puestosVacunaciones) {
@@ -191,17 +205,24 @@ public class Hospital {
       
     }
 
-    public synchronized PuestoVacunacion librePaciente() {
-        PuestoVacunacion pv = null;
-        for (int i = 0; i < 10; i++) {
-            pv = this.puestosVacunaciones.get(i);
-            if (pv.isHuecoPaciente() && !pv.isHuecoSanitario()) {
-                System.out.println("Paciente entra en puesto:" + pv.getId());
-                
-                break;
-            }
-        }
-        return pv;
+//    public synchronized int huecoPVpaciente() {
+//        int a = 3;
+//        PuestoVacunacion pv = null;
+//        for (int i = 0; i < 10; i++) {
+//            pv = this.puestosVacunaciones.get(i);
+//            
+//            if (pv.isHuecoPaciente() && !pv.isHuecoSanitario()) {
+//                System.out.println("Paciente entra en puesto:" + pv.getId());
+//                a = i;
+//                break;
+//            }
+//        }
+//        return a;
+//    }
+    
+    public void puestoConHuecoPaciente(PuestoVacunacion pv){
+        puestosLibres.add(pv);
+   
     }
 
     public String recorrerColaObservacion(ConcurrentLinkedQueue<Paciente> cola) {

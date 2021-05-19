@@ -238,8 +238,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         hospital.setPuestosVacunaciones(puestosVacunaciones);
 
-       
-
+        
+        for (int i = 0; i <= 9; i++) {
+            hospital.getPuestosLibres().add(puestosVacunaciones.get(i));
+        }
         //Creo a los sanitarios
         for (int i = 1; i <= 10; i++) {
             Sanitario s = new Sanitario(i,hospital);

@@ -60,7 +60,7 @@ public class PuestoVacunacion {
 
     public synchronized void ponerVacuna(Sanitario S) throws InterruptedException {
 
-        while ((h.getVacunas().get() <= 0) || (this.isHuecoPaciente())) {
+        while ((h.getVacunas().get() <= 0) || (this.isHuecoPaciente()) ) {
             wait();
         }
 
@@ -71,7 +71,9 @@ public class PuestoVacunacion {
             this.huecoPaciente = true;
             this.s = S.getNumero() + ",";
             this.texto.setText(s);
-            notifyAll();
+            h.puestoConHuecoPaciente(this);
+  
+            
         } catch (InterruptedException ex) {
             System.err.println("Fallo en vacunación");
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);

@@ -79,6 +79,7 @@ public class Paciente extends Thread {
         try {
             
            pv =  h.getMesaAsiganada().take();
+           System.err.println("Prueba mesa asignada número:"+pv.getId());
            h.getRecepcion().remove(this);
            h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
            
@@ -89,15 +90,20 @@ public class Paciente extends Thread {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
            
         }
-        try{
-            h.getSalaObservacionSemaforo().acquire();
-            
-            
-        System.out.println("Paciente " + this.numero + " va a observación");
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
-           
-        }
+//        try{
+//            
+//            po = h.getPuestoObservacion().take();
+//            System.out.println("Paciente " + this.numero + " va a observación");
+//            
+//            
+//            
+//            
+//        
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+//           
+//        }
+
          //Demomento los mando fuera del Hospital
         
         System.out.println("Paciente " + this.numero + " marcha del hospital");
