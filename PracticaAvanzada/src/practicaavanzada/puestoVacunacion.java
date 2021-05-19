@@ -5,6 +5,8 @@
  */
 package practicaavanzada;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /**
@@ -53,24 +55,31 @@ public class PuestoVacunacion {
 
     public void setHuecoSanitario(boolean huecoSanitario) {
         this.huecoSanitario = huecoSanitario;
-        
+
     }
 
     public synchronized void ponerVacuna(Sanitario S) throws InterruptedException {
 
-        while ((h.getVacunas().get() <= 0) || (this.isHuecoPaciente()) || (this.isHuecoSanitario())) {
+        while ((h.getVacunas().get() <= 0) || (this.isHuecoPaciente())) {
             wait();
         }
 
-        Thread.sleep(3000 + (int) Math.random() * 2000);
-        this.huecoPaciente = true;
-        this.s = S.getNumero() + ",";
-        this.texto.setText(s);
-        h.getVacunas().decrementAndGet();
-
+        try {
+            Thread.sleep(3000 + (int) Math.random() * 2000);
+            h.getVacunas().decrementAndGet();
+            h.getSalaVacunacionSemaforo().release();
+            this.huecoPaciente = true;
+            this.s = S.getNumero() + ",";
+            this.texto.setText(s);
+            notifyAll();
+        } catch (InterruptedException ex) {
+            System.err.println("Fallo en vacunación");
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public synchronized void meterPaciente(Paciente p) {
+    public synchronized void meterPaciente(Paciente p) throws InterruptedException {
+        h.getSalaVacunacionSemaforo().acquire();
         this.s += p.getNumero() + ",";
         this.texto.setText(s);
         this.huecoPaciente = false;

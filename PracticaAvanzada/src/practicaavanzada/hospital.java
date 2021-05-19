@@ -48,8 +48,8 @@ public class Hospital {
 
     //Sala de observacion
     private Semaphore salaObservacionSemaforo = new Semaphore(20);
-    private ConcurrentLinkedQueue observacion = new ConcurrentLinkedQueue();
-    private ArrayList<PuestoVacunacion> puestosObservacion;
+    private ArrayList<PuestoObservacion> puestosObservacion;
+    private BlockingQueue<PuestoObservacion> mesaObservacion = new LinkedBlockingQueue<PuestoObservacion>(1);
 
     public Hospital(JTextArea colaEspera, JTextField aux1, JTextField pacienteAtendiendo, JTextField aux2, JTextField vacunasDisp, JTextPane salaDescanso) {
         //Recepcion
@@ -109,8 +109,9 @@ public class Hospital {
         return vacunas;
     }
 
-    public AtomicInteger añadirVacunas() {
+    public synchronized AtomicInteger añadirVacunas() {
         vacunas.incrementAndGet();
+        notify();
         return vacunas;
     }
 
@@ -182,10 +183,12 @@ public class Hospital {
             pv = this.puestosVacunaciones.get(i);
             if (pv.isHuecoSanitario()) {
                 pv.setHuecoSanitario(false);
-                return pv;
+                break;
             }
+            
         }
         return pv;
+      
     }
 
     public synchronized PuestoVacunacion librePaciente() {
@@ -194,7 +197,8 @@ public class Hospital {
             pv = this.puestosVacunaciones.get(i);
             if (pv.isHuecoPaciente() && !pv.isHuecoSanitario()) {
                 System.out.println("Paciente entra en puesto:" + pv.getId());
-                return pv;
+                
+                break;
             }
         }
         return pv;
@@ -213,4 +217,16 @@ public class Hospital {
         }
         return s;
     }
+
+    public PuestoObservacion getPuestoObservacion() {
+        PuestoObservacion po = null;
+        for (int i = 0; i < 20; i++) {
+            po = this.puestosObservacion.get(i);
+            if (po.isHuecoPaciente()) {
+                
+            
+            }
+    }
+        return po;
+}
 }
