@@ -74,7 +74,14 @@ public class PuestoVacunacion {
             this.texto.setText(s);
             h.puestoConHuecoPaciente(this);
             
-            
+             try {
+                 //Busca sitio para observación   
+                 
+                    h.getPuestoObservacionAsignado().put(h.getPuestosObservacionLibres().take());
+
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
+                }
   
             
         } catch (InterruptedException ex) {
