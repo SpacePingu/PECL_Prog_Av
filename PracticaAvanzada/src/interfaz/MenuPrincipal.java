@@ -249,7 +249,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         PuestoObservacion po8 = new PuestoObservacion(8, o.getjTextObservacion8(), hospital);
         PuestoObservacion po9 = new PuestoObservacion(9, o.getjTextObservacion9(), hospital);
         PuestoObservacion po10 = new PuestoObservacion(10, o.getjTextObservacion10(), hospital);
-        PuestoObservacion po11 = new PuestoObservacion(11, o.getjTextObservacion10(), hospital);
+        PuestoObservacion po11 = new PuestoObservacion(11, o.getjTextObservacion11(), hospital);
         PuestoObservacion po12 = new PuestoObservacion(12, o.getjTextObservacion12(), hospital);
         PuestoObservacion po13 = new PuestoObservacion(13, o.getjTextObservacion13(), hospital);
         PuestoObservacion po14 = new PuestoObservacion(14, o.getjTextObservacion14(), hospital);
@@ -282,6 +282,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         puestosObservaciones.add(po18);
         puestosObservaciones.add(po19);
         puestosObservaciones.add(po20);
+        
+        
+        hospital.setPuestosObservacion(puestosObservaciones);
+        //lleno los puestos libres con el array de las salas
+
+        for (int i = 0; i <= 19; i++) {
+            hospital.getPuestosObservacionLibres().add(puestosObservaciones.get(i));
+        }
+        
+        
+        
 
         //Creo a los sanitarios
         for (int i = 1; i <= 10; i++) {

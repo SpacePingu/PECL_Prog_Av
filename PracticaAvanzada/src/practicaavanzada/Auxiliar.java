@@ -61,6 +61,14 @@ public class Auxiliar extends Thread {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                try {
+                 //Busca sitio para observación   
+                 
+                    h.getPuestoObservacionAsignado().put(h.getPuestosObservacionLibres().take());
+
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 //Descaso cada 10 pacientes
                 if (contador.get() == 10) {
                     h.getAux1().setText("");

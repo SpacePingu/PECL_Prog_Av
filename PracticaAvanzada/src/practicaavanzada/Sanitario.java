@@ -62,8 +62,8 @@ public class Sanitario extends Thread {
 
             //Poner Vacuna
             try {
-                pv.ponerVacuna(this);
-                System.out.println("Sanitario " + numero + " inyecta vacuna a:");
+                pv.ponerVacuna(this);                
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -91,6 +91,7 @@ public class Sanitario extends Thread {
                 pv = h.libreSanitario();
                 pv.meterSanitario(this);
                 contador.set(0);
+                
             }
 
         }

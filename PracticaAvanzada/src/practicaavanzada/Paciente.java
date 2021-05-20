@@ -5,9 +5,9 @@
  */
 package practicaavanzada;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JLabel;
 
 /**
  *
@@ -19,8 +19,8 @@ public class Paciente extends Thread {
     private String numero;
     private Hospital h;
     private PuestoVacunacion pv;
-    
-    
+    private PuestoObservacion po;
+    private CountDownLatch ocupado = new CountDownLatch(1);
 
     public Hospital getHospital() {
         return h;
@@ -28,6 +28,10 @@ public class Paciente extends Thread {
 
     public String getNumero() {
         return numero;
+    }
+
+    public CountDownLatch getOcupado() {
+        return ocupado;
     }
 
     public Paciente(int id, Hospital h) {
@@ -54,9 +58,9 @@ public class Paciente extends Thread {
 
         //Paciente ingresa en la recepcion del Hospital
         h.getRecepcion().add(this);
-       
+
         System.out.println("Paciente " + this.numero + " entra en el hospital");
-        
+
         //Introduce visualmente la cola de espera en la interfaz
         h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
 
@@ -67,9 +71,10 @@ public class Paciente extends Thread {
         } catch (InterruptedException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+            
         //1% los paciente no estan citados
-        if ((int) Math.random() * 100 == 1) {
+        if (Math.random() * 100 <= 1) {
+            
             System.out.println("Paciente " + this.getNumero() + " no estaba citado");
             h.getRecepcion().remove(this);
             h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
@@ -77,35 +82,40 @@ public class Paciente extends Thread {
 
         //Esperan a que se le asigne puesto de vacunacion
         try {
-            
-           pv =  h.getMesaAsiganada().take();
-           System.err.println("Prueba mesa asignada número:"+pv.getId());
-           h.getRecepcion().remove(this);
-           h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
-           
-           pv.meterPaciente(this);
-       
-        //System.out.println("Paciente " + this.getNumero() + " se le asigna el puesto: "+ h.getSalaVacunacion() );
+
+            pv = h.getMesaAsiganada().take();
+            h.getRecepcion().remove(this);
+            h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
+            //entra en la sala de vacunación   
+            pv.meterPaciente(this);
+//            ocupado.await();
+
+            //System.out.println("Paciente " + this.getNumero() + " se le asigna el puesto: "+ h.getSalaVacunacion() );
         } catch (InterruptedException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
-           
         }
-//        try{
-//            
-//            po = h.getPuestoObservacion().take();
-//            System.out.println("Paciente " + this.numero + " va a observación");
-//            
-//            
-//            
-//            
-//        
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
-//           
-//        }
 
-         //Demomento los mando fuera del Hospital
-        
+        try {
+
+            po = h.getPuestoObservacionAsignado().take();
+            po.meterPaciente(this);
+            System.out.println("Paciente " + this.numero + " va a la sala de observación: " + po.getId());
+            Thread.sleep(10000);
+
+            if (Math.random() * 100 <= 5) {
+                System.out.println("Paciente " + this.getNumero() + " Tiene una reacción a la vacuna");
+                
+            }
+            
+            h.puestoObsConHuecoPaciente(po);
+            
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        //Demomento los mando fuera del Hospital
         System.out.println("Paciente " + this.numero + " marcha del hospital");
 
     }

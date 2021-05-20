@@ -65,6 +65,7 @@ public class PuestoVacunacion {
         }
 
         try {
+            System.out.println("Sanitario " + S.getNumero() + " inyecta vacuna a:" );
             Thread.sleep(3000 + (int) Math.random() * 2000);
             h.getVacunas().decrementAndGet();
             h.getSalaVacunacionSemaforo().release();
@@ -72,6 +73,8 @@ public class PuestoVacunacion {
             this.s = S.getNumero() + ",";
             this.texto.setText(s);
             h.puestoConHuecoPaciente(this);
+            
+            
   
             
         } catch (InterruptedException ex) {
@@ -81,6 +84,7 @@ public class PuestoVacunacion {
     }
 
     public synchronized void meterPaciente(Paciente p) throws InterruptedException {
+//        p.getOcupado().await();
         h.getSalaVacunacionSemaforo().acquire();
         this.s += p.getNumero() + ",";
         this.texto.setText(s);
