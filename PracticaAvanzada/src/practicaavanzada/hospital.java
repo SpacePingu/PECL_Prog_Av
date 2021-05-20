@@ -30,11 +30,10 @@ public class Hospital {
     private JTextField aux1, pacienteAtendiendo;
     private ConcurrentLinkedQueue<Paciente> recepcion = new ConcurrentLinkedQueue<Paciente>();
     private BlockingQueue<Paciente> comprobarDatos = new LinkedBlockingQueue<Paciente>(1);
-    
 
     //Sala de Vacunas
     private BlockingQueue<PuestoVacunacion> mesaAsiganada = new LinkedBlockingQueue<PuestoVacunacion>(1);
-    private BlockingQueue<PuestoVacunacion> puestosVacunacionLibres = new LinkedBlockingQueue<PuestoVacunacion>(10); 
+    private BlockingQueue<PuestoVacunacion> puestosVacunacionLibres = new LinkedBlockingQueue<PuestoVacunacion>(10);
     private Semaphore salaVacunacionSemaforo = new Semaphore(10);
     private AtomicInteger vacunas = new AtomicInteger(0);
     private JTextField aux2, vacunasDisp;
@@ -51,8 +50,8 @@ public class Hospital {
     //Sala de observacion
     private Semaphore salaObservacionSemaforo = new Semaphore(20);
     private ArrayList<PuestoObservacion> puestosObservacion;
-    private BlockingQueue<PuestoObservacion> mesaObservacion = new LinkedBlockingQueue<PuestoObservacion>(1);
-    private BlockingQueue<PuestoObservacion> puestosObservacionLibres = new LinkedBlockingQueue<PuestoObservacion>(10);
+    private BlockingQueue<PuestoObservacion> puestoObservacionAsignado = new LinkedBlockingQueue<PuestoObservacion>(1);
+    private BlockingQueue<PuestoObservacion> puestosObservacionLibres = new LinkedBlockingQueue<PuestoObservacion>(20);
 
     public Hospital(JTextArea colaEspera, JTextField aux1, JTextField pacienteAtendiendo, JTextField aux2, JTextField vacunasDisp, JTextPane salaDescanso) {
         //Recepcion
@@ -68,6 +67,26 @@ public class Hospital {
 
     }
 
+    public ArrayList<PuestoObservacion> getPuestosObservacion() {
+        return puestosObservacion;
+    }
+
+    public void setPuestosObservacion(ArrayList<PuestoObservacion> puestosObservacion) {
+        this.puestosObservacion = puestosObservacion;
+    }
+
+    public BlockingQueue<PuestoObservacion> getPuestoObservacionAsignado() {
+        return puestoObservacionAsignado;
+    }
+
+    public BlockingQueue<PuestoObservacion> getPuestosObservacionLibres() {
+        return puestosObservacionLibres;
+    }
+
+    public void setPuestosObservacionLibres(BlockingQueue<PuestoObservacion> puestosObservacionLibres) {
+        this.puestosObservacionLibres = puestosObservacionLibres;
+    }
+    
     public void setPuestosVacunacionLibres(BlockingQueue<PuestoVacunacion> puestosVacunacionLibres) {
         this.puestosVacunacionLibres = puestosVacunacionLibres;
     }
@@ -200,34 +219,24 @@ public class Hospital {
                 pv.setHuecoSanitario(false);
                 break;
             }
-            
+
         }
         return pv;
-      
+
     }
 
-//    public synchronized int huecoPVpaciente() {
-//        int a = 3;
-//        PuestoVacunacion pv = null;
-//        for (int i = 0; i < 10; i++) {
-//            pv = this.puestosVacunaciones.get(i);
-//            
-//            if (pv.isHuecoPaciente() && !pv.isHuecoSanitario()) {
-//                System.out.println("Paciente entra en puesto:" + pv.getId());
-//                a = i;
-//                break;
-//            }
-//        }
-//        return a;
-//    }
-    
-    public void puestoConHuecoPaciente(PuestoVacunacion pv){
+    public void puestoConHuecoPaciente(PuestoVacunacion pv) {
+        
         puestosVacunacionLibres.add(pv);
-   
+
     }
-        public void puestoConHuecoPaciente(PuestoObservacion po){
+
+    public void puestoObsConHuecoPaciente(PuestoObservacion po) {
+        po.limpiar();
+        getSalaObservacionSemaforo().release();
         puestosObservacionLibres.add(po);
-   
+        
+
     }
 
     public String recorrerColaObservacion(ConcurrentLinkedQueue<Paciente> cola) {
@@ -249,10 +258,9 @@ public class Hospital {
         for (int i = 0; i < 20; i++) {
             po = this.puestosObservacion.get(i);
             if (po.isHuecoPaciente()) {
-                
-            
+
             }
-    }
+        }
         return po;
-}
+    }
 }

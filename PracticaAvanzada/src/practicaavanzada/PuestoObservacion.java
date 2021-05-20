@@ -12,6 +12,7 @@ import javax.swing.JTextField;
  * @author adryh
  */
 public class PuestoObservacion {
+
     private boolean huecoPaciente = true;
     private boolean huecoSanitario = true;
     private int id;
@@ -77,10 +78,10 @@ public class PuestoObservacion {
         notifyAll();
     }
 
+    public void limpiar() {
+        s = "";
+        this.texto.setText(s);
 
-    
-    
-    
-    
-    
+    }
+
 }
