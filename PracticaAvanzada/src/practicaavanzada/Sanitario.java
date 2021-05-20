@@ -71,7 +71,7 @@ public class Sanitario extends Thread {
 //          pv.getTexto().setText(numero);
 
             //Descanso
-            if (contador.get() == 3) {
+            if (contador.get() == 15) {
                 System.out.println("Sanitario "+this.id+" descansa");
                 pv.limpiar();
                 pv.setHuecoSanitario(true);
