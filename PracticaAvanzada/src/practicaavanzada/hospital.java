@@ -215,7 +215,7 @@ public class Hospital {
         PuestoVacunacion pv = null;
         for (int i = 0; i < 10; i++) {
             pv = this.puestosVacunaciones.get(i);
-            if (pv.isHuecoSanitario() && pv.isAbierto()) {
+            if (pv.isHuecoSanitario()) {
                 pv.setHuecoSanitario(false);
                 break;
             }

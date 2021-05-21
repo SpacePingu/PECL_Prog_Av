@@ -48,9 +48,11 @@ public class Servidor extends Thread {
                 System.out.println("Sala de vacunacion cerrada: "+a);
                 switch(a){
                     case 1: h.getPuestosVacunaciones().get(0).setAbierto(false);
-                           h.getPuestosVacunaciones().get(0).notify();
+                           h.getPuestosVacunaciones().get(0).despertar();
+                          
                 break;
                     case 2: h.getPuestosVacunaciones().get(1).setAbierto(false);
+                             h.getPuestosVacunaciones().get(1).despertar();
                 break;
                     case 3: h.getPuestosVacunaciones().get(2).setAbierto(false);
                 break;

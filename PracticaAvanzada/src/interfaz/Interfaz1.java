@@ -733,6 +733,25 @@ public class Interfaz1 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            Socket cliente;
+            DataInputStream entrada;
+            DataOutputStream salida;
+            
+            
+            cliente = new Socket(InetAddress.getLocalHost(), 5000);
+            salida = new DataOutputStream(cliente.getOutputStream());
+            
+            salida.writeInt(2);
+            salida.close();
+            cliente.close(); 
+            
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
