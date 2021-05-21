@@ -19,12 +19,16 @@ public class Paciente extends Thread {
     private String numero;
     private Hospital h;
     private PuestoVacunacion pv;
-    private PuestoObservacion po;
+    PuestoObservacion po;
     private CountDownLatch ocupado = new CountDownLatch(1);
     private boolean Reaccion = false;
 
     public Hospital getHospital() {
         return h;
+    }
+
+    public void setReaccion(boolean Reaccion) {
+        this.Reaccion = Reaccion;
     }
 
     public String getNumero() {
@@ -120,7 +124,7 @@ public class Paciente extends Thread {
 
         } catch (InterruptedException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
-
+        
         }
 
         //Demomento los mando fuera del Hospital
