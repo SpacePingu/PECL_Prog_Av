@@ -141,7 +141,7 @@ public class Sanitario extends Thread {
 
                 if ((p.getP().isReaccion() == true)) {
                     p.setHuecoSanitario(false);    
-                    a = p.getId();
+                    a = p.getId()-1;
                     break;
                 }
 
@@ -160,9 +160,9 @@ public class Sanitario extends Thread {
         
         System.out.println("Paciente: " + po.getP().getNumero() + " es atendido por Sanitario: " + this.getNumero());
         Thread.sleep(2000 + (long) (Math.random() * 3000));
-
-        po.limpiar();
         
+        po.limpiar();
+        po.getP().setReaccion(false);
         po.getP().getOcupado().countDown();
         po.setHuecoSanitario(true);
        

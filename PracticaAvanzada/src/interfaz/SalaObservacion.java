@@ -16,6 +16,9 @@ public class SalaObservacion extends javax.swing.JFrame {
     /**
      * Creates new form SalaDeObservacion
      */
+    
+    
+    
     public SalaObservacion() {
         initComponents();
     }
