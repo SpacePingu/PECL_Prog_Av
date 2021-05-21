@@ -21,6 +21,7 @@ public class Paciente extends Thread {
     private PuestoVacunacion pv;
     private PuestoObservacion po;
     private CountDownLatch ocupado = new CountDownLatch(1);
+    private boolean Reaccion = false;
 
     public Hospital getHospital() {
         return h;
@@ -33,6 +34,11 @@ public class Paciente extends Thread {
     public CountDownLatch getOcupado() {
         return ocupado;
     }
+
+    public boolean isReaccion() {
+        return Reaccion;
+    }
+    
 
     public Paciente(int id, Hospital h) {
         this.id = id;
@@ -102,8 +108,10 @@ public class Paciente extends Thread {
             System.out.println("Paciente " + this.numero + " va a la sala de observación: " + po.getId());
             Thread.sleep(10000);
 
-            if (Math.random() * 100 <= 5) {
+            if (Math.random() * 100 <= 70) {
                 System.out.println("Paciente " + this.getNumero() + " Tiene una reacción a la vacuna");
+                this.Reaccion = true;
+                ocupado.await();
                 
             }
             

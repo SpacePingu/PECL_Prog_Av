@@ -48,7 +48,7 @@ public class Auxiliar extends Thread {
                     h.getAux1().setText(this.numero);
                     System.out.println("Auxiliar " + this.numero + " comprueba datos de " + p.getNumero());
                     contador.getAndIncrement();
-                    Thread.sleep(500 + (int) (Math.random() * 500));
+                    Thread.sleep(500 + (long) (Math.random() * 500));
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -69,7 +69,7 @@ public class Auxiliar extends Thread {
                         System.out.println("Descanso de A1");
                         h.getDescansoAux().add(this);
                         h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
-                        Thread.sleep(3000 + (int) Math.random() * 2000);
+                        Thread.sleep((long) (3000 + Math.random() * 2000));
                         h.getDescansoAux().remove(this);
                         h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
                         contador.set(0);
@@ -88,14 +88,14 @@ public class Auxiliar extends Thread {
 
                     //System.out.println("Vacuna añadida");
                     h.getVacunasDisp().setText(h.getVacunas().toString());
-                    Thread.sleep(500 + (int) Math.random() * 500);
+                    Thread.sleep((long) (500 + Math.random() * 500));
 
                     if (contadorVacunas.get() == 20) {
                         h.getAux2().setText("");
                         h.getDescansoAux().add(this);
                         h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
                         System.out.println("Auxiliar 2 descansa");
-                        Thread.sleep(1000 + (int) Math.random() * 3000);
+                        Thread.sleep((long) (1000 +  Math.random() * 3000));
                         h.getDescansoAux().remove(this);
                         h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
                         contadorVacunas.set(0);

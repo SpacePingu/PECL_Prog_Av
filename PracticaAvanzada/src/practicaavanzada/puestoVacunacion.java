@@ -66,7 +66,7 @@ public class PuestoVacunacion {
 
         try {
             System.out.println("Sanitario " + S.getNumero() + " inyecta vacuna a:" );
-            Thread.sleep(3000 + (int) Math.random() * 2000);
+            Thread.sleep(3000 + (long)( Math.random() * 2000));
             h.getVacunas().decrementAndGet();
             h.getSalaVacunacionSemaforo().release();
             this.huecoPaciente = true;
@@ -74,14 +74,7 @@ public class PuestoVacunacion {
             this.texto.setText(s);
             h.puestoConHuecoPaciente(this);
             
-             try {
-                 //Busca sitio para observación   
-                 
-                    h.getPuestoObservacionAsignado().put(h.getPuestosObservacionLibres().take());
 
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
-                }
   
             
         } catch (InterruptedException ex) {
