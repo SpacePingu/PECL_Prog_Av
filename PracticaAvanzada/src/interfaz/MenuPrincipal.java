@@ -312,7 +312,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             p.start();
 
             try {
-                sleep(1000 + (int) (Math.random() * 2000));
+                sleep((long)(1000 + (Math.random() * 2000)));
             } catch (InterruptedException ex) {
                 java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }

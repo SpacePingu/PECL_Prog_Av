@@ -5,6 +5,8 @@
  */
 package practicaavanzada;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +22,7 @@ public class Sanitario extends Thread {
     private Hospital h;
     private AtomicInteger contador = new AtomicInteger(0);
     private PuestoVacunacion pv;
+    private PuestoObservacion po;
 
     public String getNumero() {
         return numero;
@@ -47,7 +50,7 @@ public class Sanitario extends Thread {
             h.getDescansoSan().add(this);
             h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
             System.out.println("Sanitario " + this.numero + " descansando");
-            Thread.sleep(1000 + (int) Math.random() * 2000);
+            Thread.sleep(1000 + (long) (Math.random() * 2000));
 
         } catch (InterruptedException ex) {
             Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,22 +60,31 @@ public class Sanitario extends Thread {
         //Asignar mesa libre           
         pv = h.libreSanitario();
         pv.meterSanitario(this);
-        
+
         while (!Thread.currentThread().isInterrupted()) {
 
             //Poner Vacuna
             try {
-                pv.ponerVacuna(this);                
-                
+                pv.ponerVacuna(this);
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
             }
             contador.incrementAndGet();
+
+            //Busca sitio para observación 
+            try {
+
+                h.getPuestoObservacionAsignado().put(h.getPuestosObservacionLibres().take());
+
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
+            }
 //          pv.getTexto().setText(numero);
 
             //Descanso
-            if (contador.get() == 15) {
-                System.out.println("Sanitario "+this.id+" descansa");
+            if (contador.get() == 2) {
+                System.out.println("Sanitario " + this.id + " descansa");
                 pv.limpiar();
                 pv.setHuecoSanitario(true);
                 this.pv = null;
@@ -80,21 +92,79 @@ public class Sanitario extends Thread {
                 h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
 
                 try {
-                    Thread.sleep(5000 + (int) Math.random() * 3000);
+                    Thread.sleep(5000 + (long) (Math.random() * 3000));
                     h.getDescansoSan().remove(this);
                     h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
-                   
+
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                try {
+                    
+                    int a = buscarEnfermo(h.getPuestosObservacion());
+                    
+                    if (a != -1){
+                        
+                        po =  h.getPuestosObservacion().get(a);
+                        curarEnfermo(po);
+                        
+                    } 
+                    
+                    
+                } catch (InterruptedException ex) {
+
+                    Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
+
                 }
                 //Asignar mesa libre           
                 pv = h.libreSanitario();
                 pv.meterSanitario(this);
                 contador.set(0);
-                
+
             }
 
         }
 
+    }
+
+    public synchronized int buscarEnfermo(ArrayList<PuestoObservacion> puestosObservacion) throws InterruptedException {
+        int a = -1;
+        PuestoObservacion p;
+        Iterator<PuestoObservacion> it = puestosObservacion.iterator();
+
+        while (it.hasNext()) {
+
+            p = it.next();
+
+            if ((p.getP() != null) && ( p.isHuecoSanitario())) {
+
+                if ((p.getP().isReaccion() == true)) {
+                    p.setHuecoSanitario(false);    
+                    a = p.getId();
+                    break;
+                }
+
+            }
+
+        }
+
+        return a;
+
+    }
+
+    public void curarEnfermo(PuestoObservacion po) throws InterruptedException {
+
+       
+        po.getTexto().setText(po.getP().getNumero() + ", " + this.numero);
+        
+        System.out.println("Paciente: " + po.getP().getNumero() + " es atendido por Sanitario: " + this.getNumero());
+        Thread.sleep(2000 + (long) (Math.random() * 3000));
+
+        po.limpiar();
+        
+        po.getP().getOcupado().countDown();
+        po.setHuecoSanitario(true);
+       
     }
 }

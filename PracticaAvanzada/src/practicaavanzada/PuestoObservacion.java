@@ -19,6 +19,7 @@ public class PuestoObservacion {
     private String s = "";
     private JTextField texto;
     private Hospital h;
+    private Paciente p;
 
     public PuestoObservacion(int id, JTextField texto, Hospital h) {
         this.id = id;
@@ -70,8 +71,15 @@ public class PuestoObservacion {
         return h;
     }
 
+    public Paciente getP() {
+        return p;
+    }
+    
+
     public synchronized void meterPaciente(Paciente p) throws InterruptedException {
+        
         h.getSalaObservacionSemaforo().acquire();
+        this.p = p;
         this.s += p.getNumero() + ",";
         this.texto.setText(s);
         this.huecoPaciente = false;
