@@ -5,6 +5,7 @@
  */
 package interfaz;
 
+import practicaavanzada.Servidor;
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import practicaavanzada.*;
@@ -206,6 +207,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //Creo el Hospital  
         Hospital hospital = new Hospital(r.getjTextColaEspera(), r.getjTextAuxiliarCola(), r.getjTextFieldPaciente(), v.getjTextAuxiliarVacunacion(), v.getjTextVaunasDisp(), d.getjTextPaneDescanso());
 
+        //Creo servidor
+        Servidor server = new Servidor(hospital);
+        server.start();
+        
         //Creo las salas de vacunacion
         PuestoVacunacion sv1 = new PuestoVacunacion(v.getjTextPuesto1(), 1, hospital);
         PuestoVacunacion sv2 = new PuestoVacunacion(v.getjTextPuesto2(), 2, hospital);
@@ -232,11 +237,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         puestosVacunaciones.add(sv10);
 
         hospital.setPuestosVacunaciones(puestosVacunaciones);
+        
+        
+        
+        
         //lleno los puestos libres con el array de las salas
 
         for (int i = 0; i <= 9; i++) {
             hospital.getPuestosVacunacionLibres().add(puestosVacunaciones.get(i));
         }
+        
+        
+        
 
         //creo las salas de observación
         PuestoObservacion po1 = new PuestoObservacion(1, o.getjTextObservacion1(), hospital);
