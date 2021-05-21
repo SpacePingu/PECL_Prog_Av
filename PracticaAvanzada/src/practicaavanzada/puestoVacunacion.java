@@ -74,26 +74,26 @@ public class PuestoVacunacion {
 
     public synchronized void ponerVacuna(Sanitario S) throws InterruptedException {
 
-        while ((h.getVacunas().get() <= 0) || (this.isHuecoPaciente()) ) {
+        while (((h.getVacunas().get() <= 0) || (this.isHuecoPaciente())) && (this.abierto)) {
             wait();
         }
+        if (this.abierto) {
+            try {
+                //    System.out.println("Sanitario " + S.getNumero() + " inyecta vacuna a:" );
+                Thread.sleep(3000 + (long) (Math.random() * 2000));
+                h.getVacunas().decrementAndGet();
+                h.getSalaVacunacionSemaforo().release();
+                this.huecoPaciente = true;
+                this.s = S.getNumero() + ",";
+                this.texto.setText(s);
+                h.puestoConHuecoPaciente(this);
 
-        try {
-        //    System.out.println("Sanitario " + S.getNumero() + " inyecta vacuna a:" );
-            Thread.sleep(3000 + (long)( Math.random() * 2000));
-            h.getVacunas().decrementAndGet();
-            h.getSalaVacunacionSemaforo().release();
-            this.huecoPaciente = true;
-            this.s = S.getNumero() + ",";
-            this.texto.setText(s);
+            } catch (InterruptedException ex) {
+                //     System.err.println("Fallo en vacunación");
+                Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
             h.puestoConHuecoPaciente(this);
-            
-
-  
-            
-        } catch (InterruptedException ex) {
-       //     System.err.println("Fallo en vacunación");
-            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -107,18 +107,22 @@ public class PuestoVacunacion {
     }
 
     public synchronized void meterSanitario(Sanitario S) {
-        this.abierto=true;
-        this.san=S;
+        this.abierto = true;
+        this.san = S;
         this.s += S.getNumero() + ",";
         this.texto.setText(s);
         this.huecoSanitario = false;
         notifyAll();
     }
 
+    public synchronized void despertar() {
+        notifyAll();
+    }
+
     public void limpiar() {
         s = "";
         this.texto.setText(s);
-        this.san=null;
+        this.san = null;
 
     }
 
