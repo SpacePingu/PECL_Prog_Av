@@ -165,6 +165,7 @@ public class Sanitario extends Thread {
         po.getP().setReaccion(false);
         po.getP().getOcupado().countDown();
         po.setHuecoSanitario(true);
+        po.setP(null);
        
     }
 }
