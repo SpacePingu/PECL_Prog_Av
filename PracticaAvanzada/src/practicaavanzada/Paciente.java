@@ -69,7 +69,7 @@ public class Paciente extends Thread {
         //Paciente ingresa en la recepcion del Hospital
         h.getRecepcion().add(this);
 
-        System.out.println("Paciente " + this.numero + " entra en el hospital");
+     //   System.out.println("Paciente " + this.numero + " entra en el hospital");
 
         //Introduce visualmente la cola de espera en la interfaz
         h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
@@ -85,7 +85,7 @@ public class Paciente extends Thread {
         //1% los paciente no estan citados
         if (Math.random() * 100 <= 1) {
             
-            System.out.println("Paciente " + this.getNumero() + " no estaba citado");
+           // System.out.println("Paciente " + this.getNumero() + " no estaba citado");
             h.getRecepcion().remove(this);
             h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
         }
@@ -109,11 +109,11 @@ public class Paciente extends Thread {
 
             po = h.getPuestoObservacionAsignado().take();
             po.meterPaciente(this);
-            System.out.println("Paciente " + this.numero + " va a la sala de observación: " + po.getId());
+          //  System.out.println("Paciente " + this.numero + " va a la sala de observación: " + po.getId());
             Thread.sleep(10000);
 
-            if (Math.random() * 100 <= 70) {
-                System.out.println("Paciente " + this.getNumero() + " Tiene una reacción a la vacuna");
+            if (Math.random() * 100 <= 5) {
+              //  System.out.println("Paciente " + this.getNumero() + " Tiene una reacción a la vacuna");
                 this.Reaccion = true;
                 ocupado.await();
                 
@@ -128,7 +128,7 @@ public class Paciente extends Thread {
         }
 
         //Demomento los mando fuera del Hospital
-        System.out.println("Paciente " + this.numero + " marcha del hospital");
+      //  System.out.println("Paciente " + this.numero + " marcha del hospital");
 
     }
 

@@ -49,7 +49,7 @@ public class Sanitario extends Thread {
             this.pv = null;
             h.getDescansoSan().add(this);
             h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
-            System.out.println("Sanitario " + this.numero + " descansando");
+        //    System.out.println("Sanitario " + this.numero + " descansando");
             Thread.sleep(1000 + (long) (Math.random() * 2000));
 
         } catch (InterruptedException ex) {
@@ -61,7 +61,7 @@ public class Sanitario extends Thread {
         pv = h.libreSanitario();
         pv.meterSanitario(this);
 
-        while (!Thread.currentThread().isInterrupted()) {
+        while (true) {
 
             //Poner Vacuna
             try {
@@ -83,8 +83,8 @@ public class Sanitario extends Thread {
 //          pv.getTexto().setText(numero);
 
             //Descanso
-            if (contador.get() == 2) {
-                System.out.println("Sanitario " + this.id + " descansa");
+            if (contador.get() == 15 || !pv.isAbierto()) {
+            //    System.out.println("Sanitario " + this.id + " descansa");
                 pv.limpiar();
                 pv.setHuecoSanitario(true);
                 this.pv = null;
@@ -158,13 +158,14 @@ public class Sanitario extends Thread {
        
         po.getTexto().setText(po.getP().getNumero() + ", " + this.numero);
         
-        System.out.println("Paciente: " + po.getP().getNumero() + " es atendido por Sanitario: " + this.getNumero());
+     //   System.out.println("Paciente: " + po.getP().getNumero() + " es atendido por Sanitario: " + this.getNumero());
         Thread.sleep(2000 + (long) (Math.random() * 3000));
         
         po.limpiar();
         po.getP().setReaccion(false);
         po.getP().getOcupado().countDown();
         po.setHuecoSanitario(true);
+        po.setP(null);
        
     }
 }

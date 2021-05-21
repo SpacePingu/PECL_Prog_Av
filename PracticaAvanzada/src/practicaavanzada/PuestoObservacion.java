@@ -35,6 +35,10 @@ public class PuestoObservacion {
         this.huecoPaciente = huecoPaciente;
     }
 
+    public void setP(Paciente p) {
+        this.p = p;
+    }
+
     public boolean isHuecoSanitario() {
         return huecoSanitario;
     }
