@@ -112,7 +112,7 @@ public class Paciente extends Thread {
 
         } catch (InterruptedException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
-
+        
         }
 
         //Demomento los mando fuera del Hospital
