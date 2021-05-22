@@ -5,6 +5,7 @@
  */
 package practicaavanzada;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextField;
@@ -13,7 +14,7 @@ import javax.swing.JTextField;
  *
  * @author fersa
  */
-public class PuestoVacunacion {
+public class PuestoVacunacion implements Serializable{
 
     private boolean huecoPaciente = true;
     private boolean huecoSanitario = true;

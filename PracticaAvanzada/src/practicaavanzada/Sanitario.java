@@ -5,6 +5,7 @@
  */
 package practicaavanzada;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author fersa
  */
-public class Sanitario extends Thread {
+public class Sanitario extends Thread implements Serializable{
 
     private int id;
     private String numero;
