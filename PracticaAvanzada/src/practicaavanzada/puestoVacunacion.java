@@ -93,7 +93,7 @@ public class PuestoVacunacion {
                 Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            h.puestoConHuecoPaciente(this);
+           
         }
     }
 

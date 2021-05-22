@@ -756,34 +756,186 @@ public class Interfaz1 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+            Socket cliente;
+            DataInputStream entrada;
+            DataOutputStream salida;
+            
+            
+            cliente = new Socket(InetAddress.getLocalHost(), 5000);
+            salida = new DataOutputStream(cliente.getOutputStream());
+            
+            salida.writeInt(3);
+            salida.close();
+            cliente.close(); 
+            
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+            Socket cliente;
+            DataInputStream entrada;
+            DataOutputStream salida;
+            
+            
+            cliente = new Socket(InetAddress.getLocalHost(), 5000);
+            salida = new DataOutputStream(cliente.getOutputStream());
+            
+            salida.writeInt(4);
+            salida.close();
+            cliente.close(); 
+            
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+            Socket cliente;
+            DataInputStream entrada;
+            DataOutputStream salida;
+            
+            
+            cliente = new Socket(InetAddress.getLocalHost(), 5000);
+            salida = new DataOutputStream(cliente.getOutputStream());
+            
+            salida.writeInt(5);
+            salida.close();
+            cliente.close(); 
+            
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+            Socket cliente;
+            DataInputStream entrada;
+            DataOutputStream salida;
+            
+            
+            cliente = new Socket(InetAddress.getLocalHost(), 5000);
+            salida = new DataOutputStream(cliente.getOutputStream());
+            
+            salida.writeInt(6);
+            salida.close();
+            cliente.close(); 
+            
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+            Socket cliente;
+            DataInputStream entrada;
+            DataOutputStream salida;
+            
+            
+            cliente = new Socket(InetAddress.getLocalHost(), 5000);
+            salida = new DataOutputStream(cliente.getOutputStream());
+            
+            salida.writeInt(7);
+            salida.close();
+            cliente.close(); 
+            
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+            Socket cliente;
+            DataInputStream entrada;
+            DataOutputStream salida;
+            
+            
+            cliente = new Socket(InetAddress.getLocalHost(), 5000);
+            salida = new DataOutputStream(cliente.getOutputStream());
+            
+            salida.writeInt(8);
+            salida.close();
+            cliente.close(); 
+            
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+            Socket cliente;
+            DataInputStream entrada;
+            DataOutputStream salida;
+            
+            
+            cliente = new Socket(InetAddress.getLocalHost(), 5000);
+            salida = new DataOutputStream(cliente.getOutputStream());
+            
+            salida.writeInt(9);
+            salida.close();
+            cliente.close(); 
+            
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+            Socket cliente;
+            DataInputStream entrada;
+            DataOutputStream salida;
+            
+            
+            cliente = new Socket(InetAddress.getLocalHost(), 5000);
+            salida = new DataOutputStream(cliente.getOutputStream());
+            
+            salida.writeInt(10);
+            salida.close();
+            cliente.close(); 
+            
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton10ActionPerformed
 
 
