@@ -12,7 +12,7 @@ import javax.swing.JTextField;
  *
  * @author adryh
  */
-public class PuestoObservacion implements Serializable{
+public class PuestoObservacion{
 
     private boolean huecoPaciente = true;
     private boolean huecoSanitario = true;

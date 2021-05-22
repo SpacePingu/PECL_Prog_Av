@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author fersa
  */
-public class Paciente extends Thread implements Serializable{
+public class Paciente extends Thread{
 
     private int id;
     private String numero;

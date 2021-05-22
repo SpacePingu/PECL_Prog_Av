@@ -723,17 +723,17 @@ public class Interfaz1 extends javax.swing.JFrame {
     private static void actualizarHospital() throws UnknownHostException, IOException, ClassNotFoundException {
 
         Socket cliente;
-        ObjectInputStream entrada;
+        DataInputStream entrada;
         DataOutputStream salida;
 
         cliente = new Socket(InetAddress.getLocalHost(), 5000);
         salida = new DataOutputStream(cliente.getOutputStream());
         salida.writeInt(0);
-        entrada = new ObjectInputStream(cliente.getInputStream());
+        entrada = new DataInputStream(cliente.getInputStream());
 
         
-        h = (Hospital) entrada.readObject();
-
+      
+     
         System.out.println(h.getColaEspera().toString());
 
         salida.close();

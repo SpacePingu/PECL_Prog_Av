@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author fersa
  */
-public class Sanitario extends Thread implements Serializable{
+public class Sanitario extends Thread{
 
     private int id;
     private String numero;

@@ -24,7 +24,7 @@ public class Servidor extends Thread {
 
     private ServerSocket servidor;
     private Socket conexion;
-    private ObjectOutputStream salida;
+    private DataOutputStream salida;
     private DataInputStream entrada;
 
     private Hospital h;
@@ -40,14 +40,20 @@ public class Servidor extends Thread {
             System.out.println("Servidor Arrancado....");
             while (true) {
                 conexion = servidor.accept(); //Esperamos una conexión
+                String s = "";
                 System.out.println("Conexion establecida");
                 entrada = new DataInputStream(conexion.getInputStream()); //Abrimos los canales de E/S
-                salida = new ObjectOutputStream(conexion.getOutputStream());
+                salida = new DataOutputStream(conexion.getOutputStream());
                 int a = entrada.readInt();
                 System.out.println("Sala de vacunacion cerrada: " + a);
                 switch (a) {
                     case 0:
-                        salida.writeObject(h);
+                        //Recepcion
+                        s+=h.getColaEspera();
+                        
+                        
+                        
+                        salida.writeUTF(s);
                         System.out.println("mandando datos");
                         
                     case 1:

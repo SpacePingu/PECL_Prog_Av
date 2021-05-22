@@ -14,7 +14,7 @@ import javax.swing.JTextField;
  *
  * @author fersa
  */
-public class PuestoVacunacion implements Serializable{
+public class PuestoVacunacion{
 
     private boolean huecoPaciente = true;
     private boolean huecoSanitario = true;

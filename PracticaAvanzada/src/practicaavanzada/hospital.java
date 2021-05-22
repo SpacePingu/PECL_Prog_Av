@@ -24,7 +24,7 @@ import javax.swing.JTextPane;
  *
  * @author fersa
  */
-public class Hospital implements Serializable{
+public class Hospital{
 
     //Recepcion
     private JTextArea colaEspera;

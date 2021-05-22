@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author fersa
  */
-public class Auxiliar extends Thread implements Serializable{
+public class Auxiliar extends Thread{
 
     private int id;
     private String numero;
