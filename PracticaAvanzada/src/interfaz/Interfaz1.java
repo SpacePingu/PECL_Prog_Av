@@ -16,6 +16,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextArea;
 import javax.swing.Timer;
 import practicaavanzada.*;
 
@@ -36,6 +37,10 @@ public class Interfaz1 extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         initComponents();
 
+    }
+
+    public JTextArea getColaEspera() {
+        return ColaEspera;
     }
 
     /**
@@ -687,59 +692,9 @@ public class Interfaz1 extends javax.swing.JFrame {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-
-      
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Interfaz1().setVisible(true);
+   
                 
-                Timer reloj = new Timer(1000, new ActionListener(){
-                
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        System.err.println("LLEGA");
-                        actualizarHospital();
-                        
-                    } catch (IOException ex) {
-                        Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(Interfaz1.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }); 
-                
-             reloj.start();
-
-            }
-        });
-    }
-
-    private static void actualizarHospital() throws UnknownHostException, IOException, ClassNotFoundException {
-
-        Socket cliente;
-        DataInputStream entrada;
-        DataOutputStream salida;
-
-        cliente = new Socket(InetAddress.getLocalHost(), 5000);
-        salida = new DataOutputStream(cliente.getOutputStream());
-        salida.writeInt(0);
-        entrada = new DataInputStream(cliente.getInputStream());
-
-        
-      
-     
-        System.out.println(h.getColaEspera().toString());
-
-        salida.close();
-        cliente.close();
-
-    }
+   
 
     private void pacienteTexto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteTexto1ActionPerformed
         // TODO add your handling code here:

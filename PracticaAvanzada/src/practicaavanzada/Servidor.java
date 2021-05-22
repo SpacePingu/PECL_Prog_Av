@@ -7,6 +7,7 @@ package practicaavanzada;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -26,7 +27,6 @@ public class Servidor extends Thread {
     private Socket conexion;
     private DataOutputStream salida;
     private DataInputStream entrada;
-
     private Hospital h;
 
     public Servidor(Hospital h) {
@@ -38,29 +38,33 @@ public class Servidor extends Thread {
         try {
             servidor = new ServerSocket(5000); //Creamos un ServerSocket en el Puerto 5000
             System.out.println("Servidor Arrancado....");
+            ArrayList<String> s = new ArrayList<String>();
             while (true) {
                 conexion = servidor.accept(); //Esperamos una conexión
-                String s = "";
+                s.clear();
                 System.out.println("Conexion establecida");
                 entrada = new DataInputStream(conexion.getInputStream()); //Abrimos los canales de E/S
-                salida = new DataOutputStream(conexion.getOutputStream());
+               
                 int a = entrada.readInt();
                 System.out.println("Sala de vacunacion cerrada: " + a);
                 switch (a) {
                     case 0:
+
+                        
+
                         //Recepcion
-                        s+=h.getColaEspera();
+                        s.add(h.getColaEspera().getText());
+
                         
+                        //Paquete a enviar
+                       
                         
-                        
-                        salida.writeUTF(s);
                         System.out.println("mandando datos");
-                        
+                        break;
                     case 1:
                         h.getPuestosVacunaciones().get(0).setAbierto(false);
                         h.getPuestosVacunaciones().get(0).despertar();
-                        
-                        
+
                         break;
                     case 2:
                         h.getPuestosVacunaciones().get(1).setAbierto(false);
