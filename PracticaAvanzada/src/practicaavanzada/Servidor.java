@@ -55,20 +55,28 @@ public class Servidor extends Thread {
                              h.getPuestosVacunaciones().get(1).despertar();
                 break;
                     case 3: h.getPuestosVacunaciones().get(2).setAbierto(false);
+                            h.getPuestosVacunaciones().get(2).despertar();
                 break;
                     case 4: h.getPuestosVacunaciones().get(3).setAbierto(false);
+                            h.getPuestosVacunaciones().get(3).despertar();
                 break;
                     case 5: h.getPuestosVacunaciones().get(4).setAbierto(false);
-                break;
+                            h.getPuestosVacunaciones().get(4).despertar();
+                break;      
                     case 6: h.getPuestosVacunaciones().get(5).setAbierto(false);
+                            h.getPuestosVacunaciones().get(5).despertar();
                 break;
                     case 7: h.getPuestosVacunaciones().get(6).setAbierto(false);
+                            h.getPuestosVacunaciones().get(6).despertar();
                 break;
                     case 8: h.getPuestosVacunaciones().get(7).setAbierto(false);
+                            h.getPuestosVacunaciones().get(7).despertar();
                 break;
                     case 9: h.getPuestosVacunaciones().get(8).setAbierto(false);
+                            h.getPuestosVacunaciones().get(8).despertar();
                 break;
                     case 10: h.getPuestosVacunaciones().get(9).setAbierto(false);
+                            h.getPuestosVacunaciones().get(9).despertar();
                 break;
                 
                 
