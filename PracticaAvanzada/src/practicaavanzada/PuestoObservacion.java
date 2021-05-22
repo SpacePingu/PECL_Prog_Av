@@ -5,13 +5,14 @@
  */
 package practicaavanzada;
 
+import java.io.Serializable;
 import javax.swing.JTextField;
 
 /**
  *
  * @author adryh
  */
-public class PuestoObservacion {
+public class PuestoObservacion implements Serializable{
 
     private boolean huecoPaciente = true;
     private boolean huecoSanitario = true;

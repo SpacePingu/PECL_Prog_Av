@@ -5,6 +5,7 @@
  */
 package practicaavanzada;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -23,7 +24,7 @@ import javax.swing.JTextPane;
  *
  * @author fersa
  */
-public class Hospital {
+public class Hospital implements Serializable{
 
     //Recepcion
     private JTextArea colaEspera;

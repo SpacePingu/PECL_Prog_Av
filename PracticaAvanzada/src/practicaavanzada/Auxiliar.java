@@ -5,6 +5,7 @@
  */
 package practicaavanzada;
 
+import java.io.Serializable;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author fersa
  */
-public class Auxiliar extends Thread {
+public class Auxiliar extends Thread implements Serializable{
 
     private int id;
     private String numero;

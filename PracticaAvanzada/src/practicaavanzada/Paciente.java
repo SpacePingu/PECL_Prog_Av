@@ -5,6 +5,7 @@
  */
 package practicaavanzada;
 
+import java.io.Serializable;
 import java.util.concurrent.CountDownLatch;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author fersa
  */
-public class Paciente extends Thread {
+public class Paciente extends Thread implements Serializable{
 
     private int id;
     private String numero;
