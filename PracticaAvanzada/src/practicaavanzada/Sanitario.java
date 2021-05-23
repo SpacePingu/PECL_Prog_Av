@@ -5,6 +5,7 @@
  */
 package practicaavanzada;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -50,10 +51,12 @@ public class Sanitario extends Thread{
             this.pv = null;
             h.getDescansoSan().add(this);
             h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
-        //    System.out.println("Sanitario " + this.numero + " descansando");
+         h.meterLog("Sanitario " + this.numero + " descansando");
             Thread.sleep(1000 + (long) (Math.random() * 2000));
 
         } catch (InterruptedException ex) {
+            Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
         }
         h.getDescansoSan().remove(this);
@@ -67,8 +70,10 @@ public class Sanitario extends Thread{
             //Poner Vacuna
             try {
                 pv.ponerVacuna(this);
-
+                
             } catch (InterruptedException ex) {
+                Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
                 Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
             }
             contador.incrementAndGet();
@@ -81,47 +86,53 @@ public class Sanitario extends Thread{
             } catch (InterruptedException ex) {
                 Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
             }
-//          pv.getTexto().setText(numero);
+
 
             //Descanso
             if (contador.get() == 15 || !pv.isAbierto()) {
-            //    System.out.println("Sanitario " + this.id + " descansa");
-                pv.limpiar();
-                pv.setHuecoSanitario(true);
-                this.pv = null;
-                h.getDescansoSan().add(this);
-                h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
-
                 try {
-                    Thread.sleep(5000 + (long) (Math.random() * 3000));
-                    h.getDescansoSan().remove(this);
+                    h.meterLog("Sanitario " + this.id + " descansa");
+                    pv.limpiar();
+                    pv.setHuecoSanitario(true);
+                    this.pv = null;
+                    h.getDescansoSan().add(this);
                     h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
-
-                } catch (InterruptedException ex) {
+                    
+                    try {
+                        Thread.sleep(5000 + (long) (Math.random() * 3000));
+                        h.getDescansoSan().remove(this);
+                        h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
+                        
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    try {
+                        
+                        int a = buscarEnfermo(h.getPuestosObservacion());
+                        
+                        if (a != -1){ 
+                            
+                            po =  h.getPuestosObservacion().get(a);
+                            curarEnfermo(po);
+                            h.meterLog("Sanitario " + this.numero + " cura a paciente " + po.getP());
+                            
+                        }
+                        
+                        
+                    } catch (InterruptedException ex) {
+                        
+                        Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    }
+                    //Asignar mesa libre
+                    pv = h.libreSanitario();
+                    pv.meterSanitario(this);
+                    contador.set(0);
+                    
+                } catch (IOException ex) {
                     Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-                try {
-                    
-                    int a = buscarEnfermo(h.getPuestosObservacion());
-                    
-                    if (a != -1){
-                        
-                        po =  h.getPuestosObservacion().get(a);
-                        curarEnfermo(po);
-                        
-                    } 
-                    
-                    
-                } catch (InterruptedException ex) {
-
-                    Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
-
-                }
-                //Asignar mesa libre           
-                pv = h.libreSanitario();
-                pv.meterSanitario(this);
-                contador.set(0);
 
             }
 

@@ -5,10 +5,18 @@
  */
 package practicaavanzada;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -16,6 +24,8 @@ import java.util.concurrent.Semaphore;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -24,8 +34,12 @@ import javax.swing.JTextPane;
  *
  * @author fersa
  */
-public class Hospital{
+public class Hospital {
 
+    //LOG
+    private boolean nuevaEjecucion = true;
+    private Lock cerrojo = new ReentrantLock();
+    private Date fecha = new Date();
     //Recepcion
     private JTextArea colaEspera;
     private JTextField aux1, pacienteAtendiendo;
@@ -87,7 +101,7 @@ public class Hospital{
     public void setPuestosObservacionLibres(BlockingQueue<PuestoObservacion> puestosObservacionLibres) {
         this.puestosObservacionLibres = puestosObservacionLibres;
     }
-    
+
     public void setPuestosVacunacionLibres(BlockingQueue<PuestoVacunacion> puestosVacunacionLibres) {
         this.puestosVacunacionLibres = puestosVacunacionLibres;
     }
@@ -227,7 +241,7 @@ public class Hospital{
     }
 
     public void puestoConHuecoPaciente(PuestoVacunacion pv) {
-        
+
         puestosVacunacionLibres.add(pv);
 
     }
@@ -236,7 +250,6 @@ public class Hospital{
         po.limpiar();
         getSalaObservacionSemaforo().release();
         puestosObservacionLibres.add(po);
-        
 
     }
 
@@ -264,4 +277,27 @@ public class Hospital{
         }
         return po;
     }
+
+    public void meterLog(String s) throws FileNotFoundException, IOException {
+        cerrojo.lock();
+        
+        File file = new File("log.txt");
+        FileWriter out = new FileWriter(file, true);
+        BufferedWriter br = new BufferedWriter(out);
+        PrintWriter pr = new PrintWriter(br);
+
+        if (nuevaEjecucion) {
+            FileOutputStream writer = new FileOutputStream("log.txt");
+            writer.write(("").getBytes());
+            writer.close();
+            nuevaEjecucion = false;
+        }
+
+        pr.println(s + " - " + fecha.toString());
+        pr.close();
+        br.close();
+        out.close();
+        cerrojo.unlock();
+    }
+
 }
