@@ -64,19 +64,23 @@ public class Servidor extends Thread {
                     case 1:
                         h.getPuestosVacunaciones().get(0).setAbierto(false);
                         h.getPuestosVacunaciones().get(0).despertar();
+                        h.meterLog("Sala Vacunacion " + a + " cerrada");
 
                         break;
                     case 2:
                         h.getPuestosVacunaciones().get(1).setAbierto(false);
                         h.getPuestosVacunaciones().get(1).despertar();
+                        h.meterLog("Sala Vacunacion " + a + " cerrada");
                         break;
                     case 3:
                         h.getPuestosVacunaciones().get(2).setAbierto(false);
                         h.getPuestosVacunaciones().get(2).despertar();
+                        h.meterLog("Sala Vacunacion " + a + " cerrada");
                         break;
                     case 4:
                         h.getPuestosVacunaciones().get(3).setAbierto(false);
                         h.getPuestosVacunaciones().get(3).despertar();
+                        h.meterLog("Sala Vacunacion " + a + " cerrada");
                         break;
                     case 5:
                         h.getPuestosVacunaciones().get(4).setAbierto(false);
@@ -85,22 +89,28 @@ public class Servidor extends Thread {
                     case 6:
                         h.getPuestosVacunaciones().get(5).setAbierto(false);
                         h.getPuestosVacunaciones().get(5).despertar();
+                        h.meterLog("Sala Vacunacion " + a + " cerrada");
                         break;
                     case 7:
                         h.getPuestosVacunaciones().get(6).setAbierto(false);
                         h.getPuestosVacunaciones().get(6).despertar();
+                        h.meterLog("Sala Vacunacion " + a + " cerrada");
                         break;
                     case 8:
                         h.getPuestosVacunaciones().get(7).setAbierto(false);
                         h.getPuestosVacunaciones().get(7).despertar();
+                        h.meterLog("Sala Vacunacion " + a + " cerrada");
                         break;
                     case 9:
                         h.getPuestosVacunaciones().get(8).setAbierto(false);
                         h.getPuestosVacunaciones().get(8).despertar();
+                        h.meterLog("Sala Vacunacion " + a + " cerrada");
+                        
                         break;
                     case 10:
                         h.getPuestosVacunaciones().get(9).setAbierto(false);
                         h.getPuestosVacunaciones().get(9).despertar();
+                        h.meterLog("Sala Vacunacion " + a + " cerrada");
                         break;
 
                 }

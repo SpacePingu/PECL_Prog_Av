@@ -5,6 +5,8 @@
  */
 package practicaavanzada;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.concurrent.CountDownLatch;
 import java.util.logging.Level;
@@ -14,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author fersa
  */
-public class Paciente extends Thread{
+public class Paciente extends Thread {
 
     private int id;
     private String numero;
@@ -43,7 +45,6 @@ public class Paciente extends Thread{
     public boolean isReaccion() {
         return Reaccion;
     }
-    
 
     public Paciente(int id, Hospital h) {
         this.id = id;
@@ -65,71 +66,76 @@ public class Paciente extends Thread{
     }
 
     public void run() {
-        //CODIGO DE HILO
-
-        //Paciente ingresa en la recepcion del Hospital
-        h.getRecepcion().add(this);
-
-     //   System.out.println("Paciente " + this.numero + " entra en el hospital");
-
-        //Introduce visualmente la cola de espera en la interfaz
-        h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
-
-        //Espera a que el auxiliar le tome los datos
         try {
-            //Le da los datos al auxiliar
-            h.getComprobarDatos().put(this);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-        //1% los paciente no estan citados
-        if (Math.random() * 100 <= 1) {
-            
-           // System.out.println("Paciente " + this.getNumero() + " no estaba citado");
-            h.getRecepcion().remove(this);
+            //CODIGO DE HILO
+
+            //Paciente ingresa en la recepcion del Hospital
+            h.getRecepcion().add(this);
+
+            h.meterLog("Paciente " + this.numero + " entra en el hospital");
+
+            //Introduce visualmente la cola de espera en la interfaz
             h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
-        }
 
-        //Esperan a que se le asigne puesto de vacunacion
-        try {
-
-            pv = h.getMesaAsiganada().take();
-            h.getRecepcion().remove(this);
-            h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
-            //entra en la sala de vacunación   
-            pv.meterPaciente(this);
-//            ocupado.await();
-
-            //System.out.println("Paciente " + this.getNumero() + " se le asigna el puesto: "+ h.getSalaVacunacion() );
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        try {
-
-            po = h.getPuestoObservacionAsignado().take();
-            po.meterPaciente(this);
-          //  System.out.println("Paciente " + this.numero + " va a la sala de observación: " + po.getId());
-            Thread.sleep(10000);
-
-            if (Math.random() * 100 <= 5) {
-              //  System.out.println("Paciente " + this.getNumero() + " Tiene una reacción a la vacuna");
-                this.Reaccion = true;
-                ocupado.await();
-                
+            //Espera a que el auxiliar le tome los datos
+            try {
+                //Le da los datos al auxiliar
+                h.getComprobarDatos().put(this);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            h.puestoObsConHuecoPaciente(po);
-            
 
-        } catch (InterruptedException ex) {
+            //1% los paciente no estan citados
+            if (Math.random() * 100 <= 1) {
+
+                h.meterLog("Paciente " + this.getNumero() + " no estaba citado");
+                h.getRecepcion().remove(this);
+                h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
+            }
+
+            //Esperan a que se le asigne puesto de vacunacion
+            try {
+
+                pv = h.getMesaAsiganada().take();
+                h.getRecepcion().remove(this);
+                h.getColaEspera().setText(h.recorrerColaEspera(h.getRecepcion()));
+                //entra en la sala de vacunación
+                pv.meterPaciente(this);
+
+                h.meterLog("Paciente " + this.getNumero() + " se le asigna el puesto de vacunacion: " + pv.getId());
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            try {
+
+                po = h.getPuestoObservacionAsignado().take();
+                po.meterPaciente(this);
+                h.meterLog("Paciente " + this.numero + " va a la sala de observación: " + po.getId());
+                Thread.sleep(10000);
+
+                if (Math.random() * 100 <= 5) {
+                    h.meterLog("Paciente " + this.getNumero() + " Tiene una reacción a la vacuna");
+                    this.Reaccion = true;
+                    ocupado.await();
+
+                }
+
+                h.puestoObsConHuecoPaciente(po);
+
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
+            //Los mando fuera del Hospital
+            h.meterLog("Paciente " + this.numero + " marcha del hospital");
+
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
-        
+        } catch (IOException ex) {
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        //Demomento los mando fuera del Hospital
-      //  System.out.println("Paciente " + this.numero + " marcha del hospital");
 
     }
 

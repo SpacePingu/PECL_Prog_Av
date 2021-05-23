@@ -5,6 +5,7 @@
  */
 package practicaavanzada;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ public class PuestoVacunacion{
     private boolean abierto = true;
     private int id;
     private Sanitario san;
+    private Paciente p;
     private String s = "";
     private JTextField texto;
     private Hospital h;
@@ -73,14 +75,14 @@ public class PuestoVacunacion{
 
     }
 
-    public synchronized void ponerVacuna(Sanitario S) throws InterruptedException {
+    public synchronized void ponerVacuna(Sanitario S) throws InterruptedException, IOException {
 
         while (((h.getVacunas().get() <= 0) || (this.isHuecoPaciente())) && (this.abierto)) {
             wait();
         }
         if (this.abierto) {
             try {
-                //    System.out.println("Sanitario " + S.getNumero() + " inyecta vacuna a:" );
+                 h.meterLog("Sanitario " + S.getNumero() + " inyecta vacuna a:" + p.getNumero());
                 Thread.sleep(3000 + (long) (Math.random() * 2000));
                 h.getVacunas().decrementAndGet();
                 h.getSalaVacunacionSemaforo().release();
@@ -99,8 +101,9 @@ public class PuestoVacunacion{
     }
 
     public synchronized void meterPaciente(Paciente p) throws InterruptedException {
-//        p.getOcupado().await();
+
         h.getSalaVacunacionSemaforo().acquire();
+        this.p=p;
         this.s += p.getNumero() + ",";
         this.texto.setText(s);
         this.huecoPaciente = false;
@@ -124,6 +127,7 @@ public class PuestoVacunacion{
         s = "";
         this.texto.setText(s);
         this.san = null;
+        this.p = null;
 
     }
 

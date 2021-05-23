@@ -5,6 +5,7 @@
  */
 package practicaavanzada;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -48,21 +49,24 @@ public class Auxiliar extends Thread{
                     p = this.h.getComprobarDatos().take();
                     h.getPacienteAtendiendo().setText(p.getNumero());
                     h.getAux1().setText(this.numero);
-                   // System.out.println("Auxiliar " + this.numero + " comprueba datos de " + p.getNumero());
+                    h.meterLog("Auxiliar " + this.numero + " comprueba datos de " + p.getNumero());
                     contador.getAndIncrement();
                     Thread.sleep(500 + (long) (Math.random() * 500));
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 //Busca sitio libre
-//                    pv = h.getPuestosVacunaciones().get(h.huecoPVpaciente());
+
                 try {
                     mesaEncontrada=false;
                     while (mesaEncontrada==false) {
                         pv=h.getPuestosVacunacionLibres().take();
                         if(pv.isAbierto()){
                               h.getMesaAsiganada().put(pv); 
+                            
                               mesaEncontrada=true;
                         }else{
                             h.getPuestosVacunacionLibres().add(pv);
@@ -76,7 +80,7 @@ public class Auxiliar extends Thread{
                 if (contador.get() == 10) {
                     h.getAux1().setText("");
                     try {
-                     //   System.out.println("Descanso de A1");
+                     h.meterLog("Descanso de A1");
                         h.getDescansoAux().add(this);
                         h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
                         Thread.sleep((long) (3000 + Math.random() * 2000));
@@ -84,6 +88,8 @@ public class Auxiliar extends Thread{
                         h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
                         contador.set(0);
                     } catch (InterruptedException ex) {
+                        Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
                         Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
@@ -96,7 +102,7 @@ public class Auxiliar extends Thread{
                     h.añadirVacunas();
                     contadorVacunas.incrementAndGet();
 
-                    //System.out.println("Vacuna añadida");
+                     h.meterLog("Vacuna añadida");
                     h.getVacunasDisp().setText(h.getVacunas().toString());
                     Thread.sleep((long) (500 + Math.random() * 500));
 
@@ -104,7 +110,7 @@ public class Auxiliar extends Thread{
                         h.getAux2().setText("");
                         h.getDescansoAux().add(this);
                         h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
-                     //   System.out.println("Auxiliar 2 descansa");
+                      h.meterLog("Auxiliar 2 descansa");
                         Thread.sleep((long) (1000 + Math.random() * 3000));
                         h.getDescansoAux().remove(this);
                         h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
@@ -112,6 +118,8 @@ public class Auxiliar extends Thread{
                     }
 
                 } catch (InterruptedException ex) {
+                    Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
                     Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

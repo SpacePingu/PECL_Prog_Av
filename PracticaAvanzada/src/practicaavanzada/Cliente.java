@@ -36,7 +36,7 @@ public class Cliente extends Thread {
     }
 
     public void run() {
-
+        /*
         while (true) {
             //Conexion
             try {
@@ -51,7 +51,7 @@ public class Cliente extends Thread {
 
                 
                 //Recepcion
-                colaEspera.setText(s.get(0));
+            
 
                 cliente.close(); //Cerramos la conexión
 
@@ -62,7 +62,7 @@ public class Cliente extends Thread {
             }
 
         }
-
+*/
     }
 
 }
