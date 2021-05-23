@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practicaavanzada;
+package cliente;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -44,20 +44,27 @@ public class Cliente extends Thread {
                 cliente = new Socket(InetAddress.getLocalHost(), 5000); //Creamos el socket para conectarnos
                
                 salida = new DataOutputStream(cliente.getOutputStream());
-                salida.writeInt(0);
+//                salida.writeInt(0);
 
                 //Recibir textos
-               
-
+                entrada = new ObjectInputStream(cliente.getInputStream());
+                s =(ArrayList<String>) entrada.readObject();
                 
                 //Recepcion
-                colaEspera.setText(s.get(0));
+                if (s.get(0)== null){
+                    colaEspera.setText("");
+                
+                }else{
+                    colaEspera.setText(s.get(0));
+                }
 
                 cliente.close(); //Cerramos la conexión
 
             } catch (IOException ex) {
                 Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             } catch (InterruptedException ex) {
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             }
 

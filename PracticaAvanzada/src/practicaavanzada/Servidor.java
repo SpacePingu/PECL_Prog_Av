@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class Servidor extends Thread {
 
     private ServerSocket servidor;
     private Socket conexion;
-    private DataOutputStream salida;
+    private ObjectOutputStream salida;
     private DataInputStream entrada;
     private Hospital h;
 
@@ -39,66 +40,91 @@ public class Servidor extends Thread {
             servidor = new ServerSocket(5000); //Creamos un ServerSocket en el Puerto 5000
             System.out.println("Servidor Arrancado....");
             ArrayList<String> s = new ArrayList<String>();
+
             while (true) {
+
                 conexion = servidor.accept(); //Esperamos una conexión
                 s.clear();
                 System.out.println("Conexion establecida");
-                entrada = new DataInputStream(conexion.getInputStream()); //Abrimos los canales de E/S
-               
+                //Abrimos los canales de E/S
+                entrada = new DataInputStream(conexion.getInputStream());
+
+                salida = new ObjectOutputStream(conexion.getOutputStream());
+                //Paquete a enviar
+                s.add(h.getColaEspera().getText()); //0
+                s.add(h.getAux1().getText());       //1
+                s.add(h.getAux2().getText());       //2
+                s.add(h.getSalaDescanso().getText());//3
+                System.out.println(s);
+                salida.writeObject(s);
+                
+
+                System.out.println("Mandando datos");
+
                 int a = entrada.readInt();
-                System.out.println("Sala de vacunacion cerrada: " + a);
+
                 switch (a) {
-                    case 0:
-
-                        
-
-                        //Recepcion
-                        s.add(h.getColaEspera().getText());
-
-                        
-                        //Paquete a enviar
-                       
-                        
-                        System.out.println("mandando datos");
-                        break;
+//                    case 0:
+//
+//                        //textos a exportar
+//                        break;
                     case 1:
+
+                        System.out.println("Sala de vacunacion cerrada: " + a);
                         h.getPuestosVacunaciones().get(0).setAbierto(false);
                         h.getPuestosVacunaciones().get(0).despertar();
-
                         break;
                     case 2:
+
+                        System.out.println("Sala de vacunacion cerrada: " + a);
                         h.getPuestosVacunaciones().get(1).setAbierto(false);
                         h.getPuestosVacunaciones().get(1).despertar();
                         break;
                     case 3:
+
+                        System.out.println("Sala de vacunacion cerrada: " + a);
                         h.getPuestosVacunaciones().get(2).setAbierto(false);
                         h.getPuestosVacunaciones().get(2).despertar();
                         break;
                     case 4:
+
+                        System.out.println("Sala de vacunacion cerrada: " + a);
                         h.getPuestosVacunaciones().get(3).setAbierto(false);
                         h.getPuestosVacunaciones().get(3).despertar();
                         break;
                     case 5:
+
+                        System.out.println("Sala de vacunacion cerrada: " + a);
                         h.getPuestosVacunaciones().get(4).setAbierto(false);
                         h.getPuestosVacunaciones().get(4).despertar();
                         break;
                     case 6:
+
+                        System.out.println("Sala de vacunacion cerrada: " + a);
                         h.getPuestosVacunaciones().get(5).setAbierto(false);
                         h.getPuestosVacunaciones().get(5).despertar();
                         break;
                     case 7:
+
+                        System.out.println("Sala de vacunacion cerrada: " + a);
                         h.getPuestosVacunaciones().get(6).setAbierto(false);
                         h.getPuestosVacunaciones().get(6).despertar();
                         break;
                     case 8:
+
+                        System.out.println("Sala de vacunacion cerrada: " + a);
                         h.getPuestosVacunaciones().get(7).setAbierto(false);
                         h.getPuestosVacunaciones().get(7).despertar();
                         break;
                     case 9:
+
+                        System.out.println("Sala de vacunacion cerrada: " + a);
                         h.getPuestosVacunaciones().get(8).setAbierto(false);
                         h.getPuestosVacunaciones().get(8).despertar();
                         break;
                     case 10:
+
+                        System.out.println("Sala de vacunacion cerrada: " + a);
                         h.getPuestosVacunaciones().get(9).setAbierto(false);
                         h.getPuestosVacunaciones().get(9).despertar();
                         break;
@@ -107,6 +133,7 @@ public class Servidor extends Thread {
 
                 entrada.close();
                 conexion.close();
+                salida.close();
 
             }
         } catch (IOException e) {
