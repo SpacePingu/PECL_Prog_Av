@@ -5,8 +5,9 @@
  */
 package interfaz;
 
-import practicaavanzada.Servidor;
+import practicaavanzada.ServidorSockets;
 import static java.lang.Thread.sleep;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import practicaavanzada.*;
 
@@ -165,7 +166,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws RemoteException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -208,7 +209,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Hospital hospital = new Hospital(r.getjTextColaEspera(), r.getjTextAuxiliarCola(), r.getjTextFieldPaciente(), v.getjTextAuxiliarVacunacion(), v.getjTextVaunasDisp(), d.getjTextPaneDescanso());
 
         //Creo servidor
-        Servidor server = new Servidor(hospital);
+        ServidorSockets server = new ServidorSockets(hospital);
         server.start();
         
         //Creo las salas de vacunacion

@@ -5,6 +5,7 @@
  */
 package practicaavanzada;
 
+import interfaz.interfazCliente;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileOutputStream;
@@ -16,12 +17,15 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 
 /**
  *
  * @author fersa
  */
-public class Servidor extends Thread {
+public class ServidorSockets extends Thread{
 
     private ServerSocket servidor;
     private Socket conexion;
@@ -29,7 +33,7 @@ public class Servidor extends Thread {
     private DataInputStream entrada;
     private Hospital h;
 
-    public Servidor(Hospital h) {
+    public ServidorSockets(Hospital h) throws RemoteException  {
         this.h = h;
 
     }
@@ -122,10 +126,12 @@ public class Servidor extends Thread {
         } catch (IOException e) {
         }
     }
-
-    private String getPuesto() {
-
-        return "";
+    
+    
+    public Hospital getH(){
+        return this.h;
     }
+
+    
 
 }

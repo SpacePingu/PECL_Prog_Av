@@ -88,6 +88,9 @@ public class ClienteMain extends javax.swing.JFrame {
                 i1.setVisible(true);
                 Cliente c = new Cliente(i1.getColaEspera());
                 c.start();
+                
+                
+                
                
                 
                

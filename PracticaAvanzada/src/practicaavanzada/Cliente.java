@@ -36,33 +36,9 @@ public class Cliente extends Thread {
     }
 
     public void run() {
-        /*
-        while (true) {
-            //Conexion
-            try {
-                Thread.sleep(1000);
-                cliente = new Socket(InetAddress.getLocalHost(), 5000); //Creamos el socket para conectarnos
-               
-                salida = new DataOutputStream(cliente.getOutputStream());
-                salida.writeInt(0);
+        
 
-                //Recibir textos
-               
-
-                
-                //Recepcion
-            
-
-                cliente.close(); //Cerramos la conexión
-
-            } catch (IOException ex) {
-                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        }
-*/
+ 
     }
 
 }
