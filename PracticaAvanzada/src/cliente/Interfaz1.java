@@ -325,6 +325,8 @@ public class Interfaz1 extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cliente Hospital.");
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Recepción");
@@ -335,6 +337,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Paciente");
 
+        pacienteTexto1.setEditable(false);
         pacienteTexto1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pacienteTexto1ActionPerformed(evt);
@@ -344,9 +347,12 @@ public class Interfaz1 extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Auxiliar");
 
+        auxiliarTexto.setEditable(false);
+
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setText("SALA DE DESCANSO");
 
+        SalaDescansoText.setEditable(false);
         SalaDescansoText.setColumns(20);
         SalaDescansoText.setRows(5);
         jScrollPane1.setViewportView(SalaDescansoText);
@@ -364,11 +370,20 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         jLabel11.setText("Puesto 5");
 
+        vac1.setEditable(false);
+
+        vac2.setEditable(false);
         vac2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vac2ActionPerformed(evt);
             }
         });
+
+        vac3.setEditable(false);
+
+        vac4.setEditable(false);
+
+        vac5.setEditable(false);
 
         jLabel12.setText("Puesto 6");
 
@@ -380,9 +395,22 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         jLabel16.setText("Puesto 10");
 
+        vac6.setEditable(false);
+
+        vac7.setEditable(false);
+
+        vac8.setEditable(false);
+
+        vac9.setEditable(false);
+
+        vac10.setEditable(false);
+
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel17.setText("Auxiliar");
 
+        Aux2Texto.setEditable(false);
+
+        vacDisponibles.setEditable(false);
         vacDisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vacDisponiblesActionPerformed(evt);
@@ -435,17 +463,55 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         jLabel39.setText("Puesto 20");
 
+        observ1.setEditable(false);
         observ1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 observ1ActionPerformed(evt);
             }
         });
 
+        observ2.setEditable(false);
+
+        observ3.setEditable(false);
+
+        observ4.setEditable(false);
         observ4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 observ4ActionPerformed(evt);
             }
         });
+
+        observ5.setEditable(false);
+
+        observ6.setEditable(false);
+
+        observ7.setEditable(false);
+
+        observ8.setEditable(false);
+
+        observ9.setEditable(false);
+
+        observ10.setEditable(false);
+
+        observ11.setEditable(false);
+
+        observ12.setEditable(false);
+
+        observ13.setEditable(false);
+
+        observ14.setEditable(false);
+
+        observ15.setEditable(false);
+
+        observ16.setEditable(false);
+
+        observ17.setEditable(false);
+
+        observ18.setEditable(false);
+
+        observ19.setEditable(false);
+
+        observ20.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -458,6 +524,7 @@ public class Interfaz1 extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        ColaEspera.setEditable(false);
         ColaEspera.setColumns(20);
         ColaEspera.setRows(5);
         jScrollPane2.setViewportView(ColaEspera);

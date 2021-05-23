@@ -293,7 +293,7 @@ public class Hospital {
             nuevaEjecucion = false;
         }
 
-        pr.println(s + " - " + fecha.toString());
+        pr.println(fecha.toString() + " : " + s  );
         pr.close();
         br.close();
         out.close();
