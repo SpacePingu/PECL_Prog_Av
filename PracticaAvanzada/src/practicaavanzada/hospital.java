@@ -39,7 +39,7 @@ public class Hospital {
     //LOG
     private boolean nuevaEjecucion = true;
     private Lock cerrojo = new ReentrantLock();
-    private Date fecha = new Date();
+   
     //Recepcion
     private JTextArea colaEspera;
     private JTextField aux1, pacienteAtendiendo;
@@ -280,7 +280,7 @@ public class Hospital {
 
     public void meterLog(String s) throws FileNotFoundException, IOException {
         cerrojo.lock();
-        
+        Date fecha = new Date();
         File file = new File("log.txt");
         FileWriter out = new FileWriter(file, true);
         BufferedWriter br = new BufferedWriter(out);

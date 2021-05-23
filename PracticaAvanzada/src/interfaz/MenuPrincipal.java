@@ -209,8 +209,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Hospital hospital = new Hospital(r.getjTextColaEspera(), r.getjTextAuxiliarCola(), r.getjTextFieldPaciente(), v.getjTextAuxiliarVacunacion(), v.getjTextVaunasDisp(), d.getjTextPaneDescanso());
 
         //Creo servidor
-        ServidorSockets server = new ServidorSockets(hospital);
+        ServidorSockets server = new ServidorSockets(hospital,0);
+        ServidorSockets server1 = new ServidorSockets(hospital,1);
         server.start();
+        server1.start();
         
         //Creo las salas de vacunacion
         PuestoVacunacion sv1 = new PuestoVacunacion(v.getjTextPuesto1(), 1, hospital);
