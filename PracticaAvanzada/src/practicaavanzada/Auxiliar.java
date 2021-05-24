@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author fersa
  */
-public class Auxiliar extends Thread{
+public class Auxiliar extends Thread {
 
     private int id;
     private String numero;
@@ -47,6 +47,7 @@ public class Auxiliar extends Thread{
                 try {
 
                     p = this.h.getComprobarDatos().take();
+
                     h.getPacienteAtendiendo().setText(p.getNumero());
                     h.getAux1().setText(this.numero);
                     h.meterLog("Auxiliar " + this.numero + " comprueba datos de " + p.getNumero());
@@ -59,28 +60,28 @@ public class Auxiliar extends Thread{
                 }
 
                 //Busca sitio libre
+                if (p.isCitado()) {
+                    try {
+                        mesaEncontrada = false;
+                        while (mesaEncontrada == false) {
+                            pv = h.getPuestosVacunacionLibres().take();
+                            if (pv.isAbierto()) {
+                                h.getMesaAsiganada().put(pv);
 
-                try {
-                    mesaEncontrada=false;
-                    while (mesaEncontrada==false) {
-                        pv=h.getPuestosVacunacionLibres().take();
-                        if(pv.isAbierto()){
-                              h.getMesaAsiganada().put(pv); 
-                            
-                              mesaEncontrada=true;
-                        }else{
-                            h.getPuestosVacunacionLibres().add(pv);
+                                mesaEncontrada = true;
+                            } else {
+                                h.getPuestosVacunacionLibres().add(pv);
+                            }
                         }
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
                 //Descaso cada 10 pacientes
                 if (contador.get() == 10) {
                     h.getAux1().setText("");
                     try {
-                     h.meterLog("Descanso de A1");
+                        h.meterLog("Descanso de A1");
                         h.getDescansoAux().add(this);
                         h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
                         Thread.sleep((long) (3000 + Math.random() * 2000));
@@ -102,7 +103,7 @@ public class Auxiliar extends Thread{
                     h.añadirVacunas();
                     contadorVacunas.incrementAndGet();
 
-                     h.meterLog("Vacuna añadida");
+                    h.meterLog("Vacuna añadida");
                     h.getVacunasDisp().setText(h.getVacunas().toString());
                     Thread.sleep((long) (500 + Math.random() * 500));
 
@@ -110,7 +111,7 @@ public class Auxiliar extends Thread{
                         h.getAux2().setText("");
                         h.getDescansoAux().add(this);
                         h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
-                      h.meterLog("Auxiliar 2 descansa");
+                        h.meterLog("Auxiliar 2 descansa");
                         Thread.sleep((long) (1000 + Math.random() * 3000));
                         h.getDescansoAux().remove(this);
                         h.getSalaDescanso().setText(h.recorrerColaDescanso(h));
