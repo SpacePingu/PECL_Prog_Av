@@ -1,124 +1,151 @@
-Mon May 24 00:26:32 CEST 2021 : Sanitario S02 descansando
-Mon May 24 00:26:32 CEST 2021 : Sanitario S10 descansando
-Mon May 24 00:26:32 CEST 2021 : Sanitario S03 descansando
-Mon May 24 00:26:32 CEST 2021 : Sanitario S07 descansando
-Mon May 24 00:26:32 CEST 2021 : Sanitario S09 descansando
-Mon May 24 00:26:32 CEST 2021 : Sanitario S06 descansando
-Mon May 24 00:26:32 CEST 2021 : Sanitario S01 descansando
-Mon May 24 00:26:32 CEST 2021 : Sanitario S08 descansando
-Mon May 24 00:26:32 CEST 2021 : Sanitario S04 descansando
-Mon May 24 00:26:32 CEST 2021 : Paciente P0001 entra en el hospital
-Mon May 24 00:26:32 CEST 2021 : Sanitario S05 descansando
-Mon May 24 00:26:32 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:32 CEST 2021 : Auxiliar A1 comprueba datos de P0001
-Mon May 24 00:26:33 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:33 CEST 2021 : Paciente P0001 se le asigna el puesto de vacunacion: 1
-Mon May 24 00:26:34 CEST 2021 : Sanitario S06 inyecta vacuna a:P0001
-Mon May 24 00:26:34 CEST 2021 : Paciente P0002 entra en el hospital
-Mon May 24 00:26:34 CEST 2021 : Auxiliar A1 comprueba datos de P0002
-Mon May 24 00:26:34 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:35 CEST 2021 : Paciente P0002 se le asigna el puesto de vacunacion: 2
-Mon May 24 00:26:35 CEST 2021 : Sanitario S07 inyecta vacuna a:P0002
-Mon May 24 00:26:35 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:35 CEST 2021 : Paciente P0003 entra en el hospital
-Mon May 24 00:26:35 CEST 2021 : Auxiliar A1 comprueba datos de P0003
-Mon May 24 00:26:35 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:36 CEST 2021 : Paciente P0003 se le asigna el puesto de vacunacion: 3
-Mon May 24 00:26:36 CEST 2021 : Sanitario S02 inyecta vacuna a:P0003
-Mon May 24 00:26:36 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:37 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:37 CEST 2021 : Paciente P0004 entra en el hospital
-Mon May 24 00:26:37 CEST 2021 : Auxiliar A1 comprueba datos de P0004
-Mon May 24 00:26:38 CEST 2021 : Paciente P0004 se le asigna el puesto de vacunacion: 4
-Mon May 24 00:26:38 CEST 2021 : Sanitario S04 inyecta vacuna a:P0004
-Mon May 24 00:26:38 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:38 CEST 2021 : Paciente P0001 va a la sala de observación: 1
-Mon May 24 00:26:38 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:38 CEST 2021 : Paciente P0002 va a la sala de observación: 2
-Mon May 24 00:26:39 CEST 2021 : Paciente P0003 va a la sala de observación: 3
-Mon May 24 00:26:39 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:40 CEST 2021 : Paciente P0005 entra en el hospital
-Mon May 24 00:26:40 CEST 2021 : Auxiliar A1 comprueba datos de P0005
-Mon May 24 00:26:40 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:40 CEST 2021 : Paciente P0005 se le asigna el puesto de vacunacion: 5
-Mon May 24 00:26:40 CEST 2021 : Sanitario S03 inyecta vacuna a:P0005
-Mon May 24 00:26:41 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:42 CEST 2021 : Paciente P0004 va a la sala de observación: 4
-Mon May 24 00:26:42 CEST 2021 : Paciente P0006 entra en el hospital
-Mon May 24 00:26:42 CEST 2021 : Auxiliar A1 comprueba datos de P0006
-Mon May 24 00:26:42 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:42 CEST 2021 : Sanitario S01 inyecta vacuna a:P0006
-Mon May 24 00:26:42 CEST 2021 : Paciente P0006 se le asigna el puesto de vacunacion: 6
-Mon May 24 00:26:43 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:44 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:44 CEST 2021 : Paciente P0007 entra en el hospital
-Mon May 24 00:26:44 CEST 2021 : Auxiliar A1 comprueba datos de P0007
-Mon May 24 00:26:44 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:45 CEST 2021 : Paciente P0005 va a la sala de observación: 5
-Mon May 24 00:26:45 CEST 2021 : Sanitario S08 inyecta vacuna a:P0007
-Mon May 24 00:26:45 CEST 2021 : Paciente P0007 se le asigna el puesto de vacunacion: 7
-Mon May 24 00:26:45 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:46 CEST 2021 : Paciente P0008 entra en el hospital
-Mon May 24 00:26:46 CEST 2021 : Auxiliar A1 comprueba datos de P0008
-Mon May 24 00:26:46 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:46 CEST 2021 : Paciente P0006 va a la sala de observación: 6
-Mon May 24 00:26:47 CEST 2021 : Sanitario S05 inyecta vacuna a:P0008
-Mon May 24 00:26:47 CEST 2021 : Paciente P0008 se le asigna el puesto de vacunacion: 8
-Mon May 24 00:26:47 CEST 2021 : Paciente P0009 entra en el hospital
-Mon May 24 00:26:47 CEST 2021 : Auxiliar A1 comprueba datos de P0009
-Mon May 24 00:26:47 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:48 CEST 2021 : Sanitario S10 inyecta vacuna a:P0009
-Mon May 24 00:26:48 CEST 2021 : Paciente P0009 se le asigna el puesto de vacunacion: 9
-Mon May 24 00:26:48 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:48 CEST 2021 : Paciente P0001 marcha del hospital
-Mon May 24 00:26:48 CEST 2021 : Auxiliar 2 descansa
-Mon May 24 00:26:48 CEST 2021 : Paciente P0002 marcha del hospital
-Mon May 24 00:26:49 CEST 2021 : Paciente P0007 va a la sala de observación: 7
-Mon May 24 00:26:49 CEST 2021 : Paciente P0003 marcha del hospital
-Mon May 24 00:26:49 CEST 2021 : Paciente P0010 entra en el hospital
-Mon May 24 00:26:49 CEST 2021 : Auxiliar A1 comprueba datos de P0010
-Mon May 24 00:26:50 CEST 2021 : Descanso de A1
-Mon May 24 00:26:50 CEST 2021 : Paciente P0010 se le asigna el puesto de vacunacion: 10
-Mon May 24 00:26:50 CEST 2021 : Sanitario S09 inyecta vacuna a:P0010
-Mon May 24 00:26:50 CEST 2021 : Paciente P0008 va a la sala de observación: 8
-Mon May 24 00:26:51 CEST 2021 : Paciente P0011 entra en el hospital
-Mon May 24 00:26:52 CEST 2021 : Paciente P0004 marcha del hospital
-Mon May 24 00:26:52 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:52 CEST 2021 : Paciente P0009 va a la sala de observación: 9
-Mon May 24 00:26:53 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:53 CEST 2021 : Paciente P0012 entra en el hospital
-Mon May 24 00:26:54 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:54 CEST 2021 : Auxiliar A1 comprueba datos de P0011
-Mon May 24 00:26:54 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:54 CEST 2021 : Paciente P0010 va a la sala de observación: 10
-Mon May 24 00:26:55 CEST 2021 : Auxiliar A1 comprueba datos de P0012
-Mon May 24 00:26:55 CEST 2021 : Paciente P0011 se le asigna el puesto de vacunacion: 1
-Mon May 24 00:26:55 CEST 2021 : Sanitario S06 inyecta vacuna a:P0011
-Mon May 24 00:26:55 CEST 2021 : Paciente P0005 marcha del hospital
-Mon May 24 00:26:55 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:55 CEST 2021 : Sanitario S07 inyecta vacuna a:P0012
-Mon May 24 00:26:55 CEST 2021 : Paciente P0012 se le asigna el puesto de vacunacion: 2
-Mon May 24 00:26:56 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:56 CEST 2021 : Paciente P0013 entra en el hospital
-Mon May 24 00:26:56 CEST 2021 : Auxiliar A1 comprueba datos de P0013
-Mon May 24 00:26:56 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:56 CEST 2021 : Paciente P0006 marcha del hospital
-Mon May 24 00:26:57 CEST 2021 : Sanitario S02 inyecta vacuna a:P0013
-Mon May 24 00:26:57 CEST 2021 : Paciente P0013 se le asigna el puesto de vacunacion: 3
-Mon May 24 00:26:57 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:57 CEST 2021 : Paciente P0014 entra en el hospital
-Mon May 24 00:26:57 CEST 2021 : Auxiliar A1 comprueba datos de P0014
-Mon May 24 00:26:58 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:58 CEST 2021 : Sanitario S04 inyecta vacuna a:P0014
-Mon May 24 00:26:58 CEST 2021 : Paciente P0014 se le asigna el puesto de vacunacion: 4
-Mon May 24 00:26:59 CEST 2021 : Vacuna añadida
-Mon May 24 00:26:59 CEST 2021 : Paciente P0011 va a la sala de observación: 11
-Mon May 24 00:26:59 CEST 2021 : Paciente P0015 entra en el hospital
-Mon May 24 00:26:59 CEST 2021 : Auxiliar A1 comprueba datos de P0015
-Mon May 24 00:26:59 CEST 2021 : Paciente P0012 va a la sala de observación: 12
-Mon May 24 00:26:59 CEST 2021 : Paciente P0007 marcha del hospital
-Mon May 24 00:26:59 CEST 2021 : Paciente P0015 se le asigna el puesto de vacunacion: 5
-Mon May 24 00:26:59 CEST 2021 : Sanitario S03 inyecta vacuna a:P0015
-Mon May 24 00:27:00 CEST 2021 : Vacuna añadida
-Mon May 24 00:27:00 CEST 2021 : Vacuna añadida
-Mon May 24 00:27:00 CEST 2021 : Paciente P0008 marcha del hospital
+Vacuna añadida - Mon May 24 13:18:13 CEST 2021
+Sanitario S07 descansando - Mon May 24 13:18:13 CEST 2021
+Sanitario S08 descansando - Mon May 24 13:18:13 CEST 2021
+Sanitario S01 descansando - Mon May 24 13:18:13 CEST 2021
+Sanitario S03 descansando - Mon May 24 13:18:13 CEST 2021
+Sanitario S04 descansando - Mon May 24 13:18:13 CEST 2021
+Sanitario S09 descansando - Mon May 24 13:18:13 CEST 2021
+Sanitario S02 descansando - Mon May 24 13:18:13 CEST 2021
+Sanitario S05 descansando - Mon May 24 13:18:13 CEST 2021
+Sanitario S10 descansando - Mon May 24 13:18:13 CEST 2021
+Sanitario S06 descansando - Mon May 24 13:18:13 CEST 2021
+Paciente P0001 entra en el hospital - Mon May 24 13:18:13 CEST 2021
+Auxiliar A1 comprueba datos de P0001 - Mon May 24 13:18:13 CEST 2021
+Vacuna añadida - Mon May 24 13:18:14 CEST 2021
+Paciente P0001 se le asigna el puesto de vacunacion: 1 - Mon May 24 13:18:14 CEST 2021
+Vacuna añadida - Mon May 24 13:18:15 CEST 2021
+Sanitario S03 inyecta vacuna a:P0001 - Mon May 24 13:18:15 CEST 2021
+Vacuna añadida - Mon May 24 13:18:15 CEST 2021
+Paciente P0002 entra en el hospital - Mon May 24 13:18:16 CEST 2021
+Auxiliar A1 comprueba datos de P0002 - Mon May 24 13:18:16 CEST 2021
+Vacuna añadida - Mon May 24 13:18:16 CEST 2021
+Paciente P0002 se le asigna el puesto de vacunacion: 2 - Mon May 24 13:18:16 CEST 2021
+Sanitario S06 inyecta vacuna a:P0002 - Mon May 24 13:18:16 CEST 2021
+Vacuna añadida - Mon May 24 13:18:17 CEST 2021
+Paciente P0003 entra en el hospital - Mon May 24 13:18:17 CEST 2021
+Auxiliar A1 comprueba datos de P0003 - Mon May 24 13:18:17 CEST 2021
+Vacuna añadida - Mon May 24 13:18:18 CEST 2021
+Paciente P0003 se le asigna el puesto de vacunacion: 3 - Mon May 24 13:18:18 CEST 2021
+Sanitario S02 inyecta vacuna a:P0003 - Mon May 24 13:18:18 CEST 2021
+Paciente P0004 entra en el hospital - Mon May 24 13:18:18 CEST 2021
+Auxiliar A1 comprueba datos de P0004 - Mon May 24 13:18:18 CEST 2021
+Vacuna añadida - Mon May 24 13:18:19 CEST 2021
+Sanitario S01 inyecta vacuna a:P0004 - Mon May 24 13:18:19 CEST 2021
+Paciente P0004 se le asigna el puesto de vacunacion: 4 - Mon May 24 13:18:19 CEST 2021
+Vacuna añadida - Mon May 24 13:18:19 CEST 2021
+Paciente P0001 va a la sala de observación: 1 - Mon May 24 13:18:20 CEST 2021
+Paciente P0002 va a la sala de observación: 2 - Mon May 24 13:18:20 CEST 2021
+Vacuna añadida - Mon May 24 13:18:20 CEST 2021
+Paciente P0005 entra en el hospital - Mon May 24 13:18:21 CEST 2021
+Auxiliar A1 comprueba datos de P0005 - Mon May 24 13:18:21 CEST 2021
+Vacuna añadida - Mon May 24 13:18:21 CEST 2021
+Paciente P0005 se le asigna el puesto de vacunacion: 5 - Mon May 24 13:18:22 CEST 2021
+Sanitario S05 inyecta vacuna a:P0005 - Mon May 24 13:18:22 CEST 2021
+Vacuna añadida - Mon May 24 13:18:22 CEST 2021
+Paciente P0003 va a la sala de observación: 3 - Mon May 24 13:18:22 CEST 2021
+Paciente P0006 entra en el hospital - Mon May 24 13:18:22 CEST 2021
+Auxiliar A1 comprueba datos de P0006 - Mon May 24 13:18:22 CEST 2021
+Vacuna añadida - Mon May 24 13:18:23 CEST 2021
+Paciente P0006 se le asigna el puesto de vacunacion: 6 - Mon May 24 13:18:23 CEST 2021
+Sanitario S04 inyecta vacuna a:P0006 - Mon May 24 13:18:23 CEST 2021
+Paciente P0004 va a la sala de observación: 4 - Mon May 24 13:18:24 CEST 2021
+Vacuna añadida - Mon May 24 13:18:24 CEST 2021
+Vacuna añadida - Mon May 24 13:18:25 CEST 2021
+Paciente P0007 entra en el hospital - Mon May 24 13:18:25 CEST 2021
+Auxiliar A1 comprueba datos de P0007 - Mon May 24 13:18:25 CEST 2021
+Vacuna añadida - Mon May 24 13:18:25 CEST 2021
+Vacuna añadida - Mon May 24 13:18:26 CEST 2021
+Paciente P0007 se le asigna el puesto de vacunacion: 7 - Mon May 24 13:18:26 CEST 2021
+Sanitario S09 inyecta vacuna a:P0007 - Mon May 24 13:18:26 CEST 2021
+Paciente P0005 va a la sala de observación: 5 - Mon May 24 13:18:26 CEST 2021
+Paciente P0008 entra en el hospital - Mon May 24 13:18:26 CEST 2021
+Auxiliar A1 comprueba datos de P0008 - Mon May 24 13:18:26 CEST 2021
+Vacuna añadida - Mon May 24 13:18:27 CEST 2021
+Paciente P0008 se le asigna el puesto de vacunacion: 8 - Mon May 24 13:18:27 CEST 2021
+Sanitario S07 inyecta vacuna a:P0008 - Mon May 24 13:18:27 CEST 2021
+Vacuna añadida - Mon May 24 13:18:28 CEST 2021
+Paciente P0006 va a la sala de observación: 6 - Mon May 24 13:18:28 CEST 2021
+Vacuna añadida - Mon May 24 13:18:29 CEST 2021
+Paciente P0009 entra en el hospital - Mon May 24 13:18:29 CEST 2021
+Auxiliar A1 comprueba datos de P0009 - Mon May 24 13:18:29 CEST 2021
+Paciente P0007 va a la sala de observación: 7 - Mon May 24 13:18:29 CEST 2021
+Auxiliar 2 descansa - Mon May 24 13:18:29 CEST 2021
+Paciente P0009 se le asigna el puesto de vacunacion: 9 - Mon May 24 13:18:29 CEST 2021
+Sanitario S10 inyecta vacuna a:P0009 - Mon May 24 13:18:29 CEST 2021
+Paciente P0001 marcha del hospital - Mon May 24 13:18:30 CEST 2021
+Paciente P0002 marcha del hospital - Mon May 24 13:18:30 CEST 2021
+Paciente P0008 va a la sala de observación: 8 - Mon May 24 13:18:31 CEST 2021
+Paciente P0010 entra en el hospital - Mon May 24 13:18:31 CEST 2021
+Auxiliar A1 comprueba datos de P0010 - Mon May 24 13:18:31 CEST 2021
+Descanso de A1 - Mon May 24 13:18:31 CEST 2021
+Paciente P0010 se le asigna el puesto de vacunacion: 10 - Mon May 24 13:18:31 CEST 2021
+Sanitario S08 inyecta vacuna a:P0010 - Mon May 24 13:18:31 CEST 2021
+Paciente P0011 entra en el hospital - Mon May 24 13:18:32 CEST 2021
+Paciente P0003 marcha del hospital - Mon May 24 13:18:32 CEST 2021
+Vacuna añadida - Mon May 24 13:18:32 CEST 2021
+Paciente P0012 entra en el hospital - Mon May 24 13:18:33 CEST 2021
+Vacuna añadida - Mon May 24 13:18:33 CEST 2021
+Paciente P0004 marcha del hospital - Mon May 24 13:18:34 CEST 2021
+Vacuna añadida - Mon May 24 13:18:34 CEST 2021
+Paciente P0009 va a la sala de observación: 9 - Mon May 24 13:18:34 CEST 2021
+Paciente P0013 entra en el hospital - Mon May 24 13:18:35 CEST 2021
+Vacuna añadida - Mon May 24 13:18:35 CEST 2021
+Auxiliar A1 comprueba datos de P0011 - Mon May 24 13:18:35 CEST 2021
+Auxiliar A1 comprueba datos de P0012 - Mon May 24 13:18:36 CEST 2021
+Sanitario S06 inyecta vacuna a:P0011 - Mon May 24 13:18:36 CEST 2021
+Paciente P0011 se le asigna el puesto de vacunacion: 2 - Mon May 24 13:18:36 CEST 2021
+Vacuna añadida - Mon May 24 13:18:36 CEST 2021
+Paciente P0005 marcha del hospital - Mon May 24 13:18:36 CEST 2021
+Paciente P0010 va a la sala de observación: 10 - Mon May 24 13:18:36 CEST 2021
+Paciente P0012 se le asigna el puesto de vacunacion: 1 - Mon May 24 13:18:36 CEST 2021
+Auxiliar A1 comprueba datos de P0013 - Mon May 24 13:18:36 CEST 2021
+Sanitario S03 inyecta vacuna a:P0012 - Mon May 24 13:18:36 CEST 2021
+Vacuna añadida - Mon May 24 13:18:37 CEST 2021
+Paciente P0013 se le asigna el puesto de vacunacion: 3 - Mon May 24 13:18:37 CEST 2021
+Sanitario S02 inyecta vacuna a:P0013 - Mon May 24 13:18:37 CEST 2021
+Paciente P0014 entra en el hospital - Mon May 24 13:18:38 CEST 2021
+Auxiliar A1 comprueba datos de P0014 - Mon May 24 13:18:38 CEST 2021
+Paciente P0006 marcha del hospital - Mon May 24 13:18:38 CEST 2021
+Vacuna añadida - Mon May 24 13:18:38 CEST 2021
+Paciente P0014 se le asigna el puesto de vacunacion: 4 - Mon May 24 13:18:38 CEST 2021
+Sanitario S01 inyecta vacuna a:P0014 - Mon May 24 13:18:38 CEST 2021
+Vacuna añadida - Mon May 24 13:18:39 CEST 2021
+Paciente P0007 marcha del hospital - Mon May 24 13:18:39 CEST 2021
+Vacuna añadida - Mon May 24 13:18:39 CEST 2021
+Vacuna añadida - Mon May 24 13:18:40 CEST 2021
+Paciente P0015 entra en el hospital - Mon May 24 13:18:40 CEST 2021
+Auxiliar A1 comprueba datos de P0015 - Mon May 24 13:18:40 CEST 2021
+Paciente P0008 marcha del hospital - Mon May 24 13:18:41 CEST 2021
+Paciente P0011 va a la sala de observación: 11 - Mon May 24 13:18:41 CEST 2021
+Paciente P0012 va a la sala de observación: 12 - Mon May 24 13:18:41 CEST 2021
+Vacuna añadida - Mon May 24 13:18:41 CEST 2021
+Paciente P0013 va a la sala de observación: 13 - Mon May 24 13:18:41 CEST 2021
+Paciente P0015 se le asigna el puesto de vacunacion: 5 - Mon May 24 13:18:41 CEST 2021
+Sanitario S05 inyecta vacuna a:P0015 - Mon May 24 13:18:41 CEST 2021
+Vacuna añadida - Mon May 24 13:18:41 CEST 2021
+Paciente P0014 va a la sala de observación: 14 - Mon May 24 13:18:42 CEST 2021
+Vacuna añadida - Mon May 24 13:18:42 CEST 2021
+Paciente P0016 entra en el hospital - Mon May 24 13:18:43 CEST 2021
+Auxiliar A1 comprueba datos de P0016 - Mon May 24 13:18:43 CEST 2021
+Vacuna añadida - Mon May 24 13:18:43 CEST 2021
+Vacuna añadida - Mon May 24 13:18:43 CEST 2021
+Paciente P0016 se le asigna el puesto de vacunacion: 6 - Mon May 24 13:18:43 CEST 2021
+Sanitario S04 inyecta vacuna a:P0016 - Mon May 24 13:18:43 CEST 2021
+Vacuna añadida - Mon May 24 13:18:44 CEST 2021
+Paciente P0009 marcha del hospital - Mon May 24 13:18:44 CEST 2021
+Paciente P0017 entra en el hospital - Mon May 24 13:18:45 CEST 2021
+Auxiliar A1 comprueba datos de P0017 - Mon May 24 13:18:45 CEST 2021
+Vacuna añadida - Mon May 24 13:18:45 CEST 2021
+Paciente P0017 se le asigna el puesto de vacunacion: 7 - Mon May 24 13:18:45 CEST 2021
+Sanitario S09 inyecta vacuna a:P0017 - Mon May 24 13:18:45 CEST 2021
+Paciente P0015 va a la sala de observación: 15 - Mon May 24 13:18:46 CEST 2021
+Vacuna añadida - Mon May 24 13:18:46 CEST 2021
+Vacuna añadida - Mon May 24 13:18:46 CEST 2021
+Paciente P0010 marcha del hospital - Mon May 24 13:18:46 CEST 2021
+Vacuna añadida - Mon May 24 13:18:47 CEST 2021
+Paciente P0016 va a la sala de observación: 16 - Mon May 24 13:18:47 CEST 2021
+Paciente P0018 entra en el hospital - Mon May 24 13:18:48 CEST 2021
+Auxiliar A1 comprueba datos de P0018 - Mon May 24 13:18:48 CEST 2021
+Auxiliar 2 descansa - Mon May 24 13:18:48 CEST 2021
+Paciente P0018 se le asigna el puesto de vacunacion: 8 - Mon May 24 13:18:48 CEST 2021
+Sanitario S07 inyecta vacuna a:P0018 - Mon May 24 13:18:48 CEST 2021
